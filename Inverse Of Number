@@ -1,0 +1,37 @@
+problem
+Inverse of number
+
+Example
+Input – 21453
+output – 23154
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+   
+   // inverse of number
+   
+   Scanner scn = new Scanner(System.in);
+   int number = scn.nextInt();
+   
+   int op = 1;
+   int inv = 0;
+   
+   while(number != 0){
+       int on = number % 10;
+       int id = on;
+       int digit = op;
+       
+       // calculation for inverse
+       
+       inv = inv+ digit * (int) Math.pow(10, id-1);
+       
+       
+       number = number/10;
+       op++;
+   }
+   System.out.print(inv);
+   
+  }
+}
