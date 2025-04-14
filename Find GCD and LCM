@@ -1,0 +1,42 @@
+Problem
+find gcd and Lcm
+
+Example
+input num1 = 24, num2 = 36
+output = lcm 12, gcd = 72
+
+formula of Lcm = (num1*num2)/gcd;
+
+Solution
+--------------------------------------------------------------------------------
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+   
+   // calculate GCD and LCM
+   
+   // Greatest Common Divisor
+   // Least Common Multiple
+   
+   Scanner scn = new Scanner(System.in);
+   int num1 = scn.nextInt();
+   int num2 = scn.nextInt();
+   
+   int oriNum1 = num1;
+   int oriNum2 = num2;
+   
+   while(num1%num2 != 0) {
+       int rem = num1%num2;
+       num1 = num2;
+       num2 = rem;
+   }
+   
+   int gcd = num2;
+   int lcm = (oriNum1 * oriNum2) / gcd;
+   
+   System.out.println(gcd);
+   System.out.println(lcm);
+   
+  }
+}
