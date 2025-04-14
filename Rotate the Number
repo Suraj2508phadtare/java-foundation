@@ -1,0 +1,68 @@
+Problem
+
+Rotate the number
+
+Example
+input = 12355
+ratate = 2
+output = 55123;
+
+// negative case 
+rotate  = -2
+output = 35512
+
+// max rotated number logic
+get modulus of the rotation number means 352 rotation only 2 rotation
+
+Solution
+-----------------------------------------------------
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+      // Rotation of number
+  
+  Scanner scn = new Scanner(System.in);
+  int number = scn.nextInt();
+  int k = scn.nextInt();
+  
+  
+  // find total digit count;
+  
+  int temp = number;
+  int count = 0;
+  while(temp != 0){
+      temp = temp/10;
+      count++;
+  }
+  
+  // negative case handle
+  
+   if(k<0){
+      k = k + count;
+  }
+  
+  // big number case handler
+  k = k%count;
+
+    
+  int div = 1;
+  int multi = 1;
+  
+  for(int i=1; i<=count; i++){
+      if(i <= k){
+          div=div*10;
+      }else{
+          multi = multi*10;
+      }
+  }
+  
+  int quetient = number/div;
+  int reim = number%div;
+  
+  int rotatedNum = multi*reim+q;  
+  System.out.print(rotatedNum);
+  }
+}
