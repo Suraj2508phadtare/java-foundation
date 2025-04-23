@@ -1,0 +1,44 @@
+Input  - 3, 4, 5
+output - True
+Explanation 3 * 3 = 9 + 4 * 4 = 16 == 5 * 5 = 25;
+
+Code 
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+      
+    // pythagorean Triplets
+    
+    // 3, 4, 5 are pythagorean Triplets..
+    // square of two small number is equal to square of max number if its true then it is Pythogorean triplet and 
+    // return true otherwise false...
+    
+    Scanner scn = new Scanner(System.in);
+    int a = scn.nextInt();
+    int b = scn.nextInt();
+    int c = scn.nextInt();
+    
+    int max = a;
+    
+    if(b>max){
+        max = b;
+    }
+    
+    if(c>max){
+        max = c;
+    }
+    
+    if(max == a){
+        boolean flag = (b * b) + (c * c) == (a * a);
+        System.out.println(flag);
+    }else if(max == b){
+        boolean flag = (a *a) + (c * c) == (b * b);
+        System.out.println(flag);
+    }else{
+       boolean flag = (a*a) + (b*b) == (c*c);
+       System.out.println(flag);
+    }
+
+  }
+}
