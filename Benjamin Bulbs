@@ -1,0 +1,32 @@
+// Benjamin Bulbs
+
+// Question ----> You are given n number of bulbs. They are all switched off A wire fluctuation in voltage hits
+
+// ----> the circuit n times in 1st fluctuation all bulb toggled in the 2nd fluctuation every 2nd
+
+// ----> bukb is toggled in 3rd fluctuation every 3rd is togged and so on. You have to find which bukb is turned on
+ // after all fluctuation
+ 
+ // print all the bulbs which remain ON
+ 
+ Example
+ Input 20
+ output 1, 4, 9, 16
+ 
+logic is all perfect square number/bulbs remain ON
+
+
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    
+    for(int i=1; i*i <= n; i++){
+        System.out.println(i*i);
+    }
+  }
+}
