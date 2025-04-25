@@ -14,37 +14,33 @@ import java.util.*;
 
 public class MyClass {
   public static void main(String args[]) {
-    
-    Scanner scn = new Scanner(System.in);
-    int n = scn.nextInt();
-    
-    int mid = n/2;
-    
-    int left = mid+1;
-    int right = mid+1;
-    
-    // for handling increment and decrement values to print Star 
-    boolean inceDecreFlag = false;
-    
-    for(int i=1; i<=n; i++){
         
-       for(int j=1; j<=n; j++){
-            if(j >= left && j<= right){
-            System.out.print("*\t");
-        }else{
-            System.out.print("\t");
-        }
-       }
-       System.out.println();
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
         
-        if(right == n || inceDecreFlag){
-            inceDecreFlag = true;
-            left++;
-            right--;
-        }else{
-            left--;
-            right++;
-        }
-    }
+        int space = n/2;
+        int star = 1;
+       // System.out.println(space);
+        
+        for(int i=1; i<= n; i++){
+           // System.out.println(space + " , " +star);
+            //System.out.println( i + "---" + n/2);
+            
+            for(int j=1; j<=space; j++){
+                System.out.print("\t");
+            }
+            
+            for(int j=1; j<=star; j++){
+                System.out.print("*\t");
+            }
+            if(i<=n/2){
+                star += 2;
+                space--;
+            }else{
+                star -= 2;
+                space++;
+            }
+            System.out.println();
+        }  
   }
 }
