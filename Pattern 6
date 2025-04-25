@@ -42,7 +42,6 @@ public class MyClass {
             star++;
             space -= 2;
         }
-        
         System.out.println();
     }
         
