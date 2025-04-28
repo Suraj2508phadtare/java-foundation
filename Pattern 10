@@ -1,0 +1,53 @@
+Question_______________________
+
+  5
+
+  	 *	
+	*		  *	
+*			    *	
+	*		  *	
+		 *
+
+Solution_______________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+      
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    int outer = n/2;
+    int inner = -1;
+    
+    for(int i=1; i<=n; i++){  
+       // outer space
+       
+       for(int j=1; j<=outer; j++){
+           System.out.print("\t");
+       }
+       
+       // star
+       System.out.print("*\t");
+       
+       // inner space
+       for(int k=1; k<=inner; k++){
+           System.out.print("\t");
+       }
+       // aftter *
+       if(inner != -1){
+           System.out.print("*\t");
+       }
+     
+       if(i<= n/2){
+           outer--;
+           inner +=2;
+       }else{
+           outer++;
+           inner -=2;
+       } 
+        System.out.println();
+    }
+    
+  }
+}
