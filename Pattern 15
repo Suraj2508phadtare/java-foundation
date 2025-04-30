@@ -1,0 +1,54 @@
+Question__________________________
+
+5
+		1	
+	2	3	2	
+3	4	5	4	3	
+	2	3	2	
+		1
+
+Solution__________________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+    Scanner scn = new Scanner(System.in);
+    int n= scn.nextInt();
+    int space = n/2;
+    int internalNumLoop =1;
+    
+    int counterNum = 1;
+    
+    for(int i=1; i<=n; i++){
+        
+        int temp = counterNum;
+        // space
+        for(int j=1; j<=space; j++){
+            System.out.print("\t");
+        }
+        // star
+        for(int k=1; k<=internalNumLoop; k++){
+            System.out.print(temp + "\t");
+            if(k<=internalNumLoop/2){
+                temp++;
+            }else{
+                temp--;
+            }
+        }
+        
+        if(i<=n/2){
+            space--;
+            internalNumLoop += 2;
+            counterNum++;
+        }else{
+            space++;
+            internalNumLoop -= 2;
+            counterNum--;
+        }
+        
+        System.out.println();
+    }
+  }
+}
