@@ -1,0 +1,30 @@
+Question__________________________________
+// reverse Number
+
+input ---> 65765383
+Output ----->
+3
+8
+3
+5
+6
+7
+5
+6
+
+Solution__________________________________
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    
+    while(n>0){
+        int num = n % 10;
+        System.out.println(num);
+        n = n/10;
+    }
+    }
+}
