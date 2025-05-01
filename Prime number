@@ -1,0 +1,58 @@
+Question______________
+
+Print all prime number form low to high
+Low = 2
+high = 50
+
+Output
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+
+Solution_________________
+
+Notes
+
+if number is not devide from square root of that number(n) then it will not devide after that
+so condition is supply
+
+j*j<= n -----> 2*2 <= 25
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+   Scanner scn = new Scanner(System.in);
+   int low = scn.nextInt();
+   int high = scn.nextInt();
+   
+   for(int i=low; i<= high; i++){
+       int count = 0;
+       
+       for(int j=2; j*j<=i; j++){
+         
+         if(i % j == 0){
+             count++;
+             break;
+         }  
+       }
+       
+       if(count == 0){
+           System.out.println(i);
+       }
+   }
+  }
+}
