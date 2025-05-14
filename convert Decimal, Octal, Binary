@@ -1,0 +1,56 @@
+// Question
+
+// Decemal to any base coversion
+//[634] base 10 = [1172] base 8 = [1001111010] base 2
+
+Logic 
+Example 
+8 / 635 = 79 remainder 2 
+8 / 79 = 9 remainder 7
+8 / 9 = 1 renainder 1
+8 / 1 = 0 remainder 1
+
+write to bottom to top to get answer
+
+in code we multiply 10 to Power 10[0]
+
+2*10[0] = 2
+7*10[1] = 70
+1*10[2] = 100
+1*10[3] = 1000
+
+Add All ------> 1172
+// Solution
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+    Scanner scn = new Scanner(System.in);
+    System.out.println("Enter a Number to convert");
+    int num = scn.nextInt();
+    System.out.println("Enter Convert Base Number");
+    int convertNumBase = scn.nextInt();
+    System.out.println("Enter Current Base Number");
+    int currentNumBase = scn.nextInt();
+    
+    int ans = convertToDecimal(num,convertNumBase,currentNumBase);
+    System.out.println(ans);
+  }
+  static int convertToDecimal(int num, int convertNumBase, int currentNumBase){
+      int rv = 0;
+      int p = 1;
+      
+      while(num > 0){
+          int r = num%convertNumBase;
+          num = num/convertNumBase;
+          rv += r * p;
+          p = currentNumBase * p;  
+      }
+      return rv;
+  }
+}
+    return rv;
+  }
+}
