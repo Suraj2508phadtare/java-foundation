@@ -1,0 +1,64 @@
+Question
+---------------------------------------------------------
+input
+Enter First Number
+72
+Enter second number
+64
+Enter Third Number
+10
+Answer is -> 8
+
+logic
+
+
+
+
+solution
+--------------------------------------------------------
+
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+    Scanner scn = new Scanner(System.in);
+    
+    System.out.println("Enter First Number");
+    int fNum = scn.nextInt();
+    System.out.println("Enter second number");
+    int sNum = scn.nextInt();
+    System.out.println("Enter Third Number");
+    int base = scn.nextInt();
+    
+    int ans = 0;
+    int nextL = 0;
+    int power = 1;
+    
+    while(fNum>0 || sNum>0) {
+        
+        int rf = fNum%10 - nextL;
+        int rs = sNum%10;
+        
+        fNum = fNum/10;
+        sNum = sNum/10;
+        
+        if(rs> rf) {
+           nextL = 1;
+           rf += base;
+        }else{
+           nextL = 0;
+        }
+        
+        int sub = rf-rs;
+        ans += sub * power;
+        power = power * 10;
+        
+    }
+    
+    System.out.println("Answer is -> "+ans);
+    
+    
+  }
+}
