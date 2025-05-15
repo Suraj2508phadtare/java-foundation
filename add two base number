@@ -1,0 +1,63 @@
+Question 
+--------------------------------------------------------------------------
+add two base number
+
+First Num  784
+scond Nu 645
+Ans is 1651
+
+how--- 4+5 = 9  -- 8+1=9, ---1 is remain 8 will carry but 8 will consider 1 (1 bunch of 8)
+second 8+4+1(carry) 13   8+5 = 13---  5 is remain 8 will carry as 1
+third  7+6+1(carry) 14   8+6 = 14 --- 6 is remain 8 will carry as 1
+no element so  1
+
+ans is 1651
+
+Solution
+--------------------------------------------------------------------------------
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+   
+    Scanner scn = new Scanner(System.in);
+    System.out.println("Enter First Number");
+    int fNum = scn.nextInt();
+     System.out.println("Enter second Number");
+    int sNum = scn.nextInt();
+     System.out.println("Enter base value");
+    int base = scn.nextInt();
+    int ans = 0;
+    int carry = 0;
+    int power = 1;
+    
+    while(fNum>0){
+        int fr = fNum%10;
+        int sr = sNum%10;
+        
+        int remAdd = fr+sr+carry;
+        
+        if(remAdd >= base){
+         int r = remAdd%base;
+         ans = ans+r*power;
+         power *= 10;
+         carry = 1;
+        }else{
+            ans = ans+remAdd*power;
+            power *= 10; 
+            carry = 0;
+        }
+        
+        fNum = fNum/10;
+        sNum = sNum/10;
+    }
+    
+    if(carry == 1){
+        int num = carry * power;
+        ans = ans+num;
+    }
+    
+   System.out.println(ans);
+   
+  }
+}
