@@ -1,0 +1,97 @@
+Question
+__________________________________________________________________________
+Add Two array
+
+input -------->
+Enter First Array Length
+5
+Enter First Array
+9
+3
+4
+6
+8
+Enter Second Array Length
+4
+Enter Second Array
+8
+9
+8
+8
+Output------------>
+addition of Two Array is  102456
+
+Solution
+_____________________________________________________________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+   
+   Scanner scn = new Scanner(System.in);
+   System.out.println("Enter First Array Length");
+   int fL = scn.nextInt();
+   
+   int[] arr1 = new int[fL];
+   System.out.println("Enter First Array");
+   for(int i=0; i<arr1.length; i++){
+     arr1[i] = scn.nextInt();  
+   }
+   
+   System.out.println("Enter Second Array Length");
+   
+   int sL = scn.nextInt();
+   
+   int[] arr2 = new int[sL];
+   
+   System.out.println("Enter Second Array");
+   
+   for(int i=0; i<arr2.length; i++){
+       arr2[i] = scn.nextInt();
+   }
+   
+   // find max length
+   
+   int max = fL>sL ? fL : sL ;
+
+   
+    int[] ans = new int[max];
+   
+   fL--;
+   sL--;
+   max--;
+    
+    
+   int c = 0;
+    // add array
+   
+   while(max>=0){
+       int sum =c; 
+       if(fL>=0){
+           sum +=arr1[fL];
+       }
+       
+       if(sL>=0){
+           sum += arr2[sL];
+       }
+       
+       ans[max] = sum%10;
+       c = sum/10;
+       // imp Step decrease array size
+       fL--;
+       sL--;
+       max--;
+   }
+   
+   System.out.print("addition of Two Array is  ");
+   
+   if(c!=0){
+       System.out.print(c);
+   }
+    //Print Ans
+    for(int val : ans){
+        System.out.print(val);
+    }
+  }
+}
