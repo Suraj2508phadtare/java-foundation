@@ -1,0 +1,102 @@
+Question
+_____________________________
+Subtsraction Two Number
+Prerequisites___
+Second Array is always greater
+input_________
+Enter first size of Array
+5
+Enter Array
+2
+3
+4
+6
+9
+Enter Second size of Array
+6
+Enter Array
+1
+1
+1
+1
+1
+1
+Output___________
+substraction is  087642
+
+Solution
+___________________________________________________
+
+import java.util.*;
+// second array is always greater
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+    Scanner scn = new Scanner(System.in);
+    System.out.println("Enter first size of Array");
+    int n1 = scn.nextInt();
+    System.out.println("Enter Array");
+    int[] a1 =new int[n1];
+    
+    for(int i=0; i<a1.length; i++){
+        a1[i] = scn.nextInt();
+    }
+    
+    System.out.println("Enter Second size of Array");
+    
+    int n2 = scn.nextInt();
+    
+    System.out.println("Enter Array");
+    
+    int[] a2 = new int[n2];
+    
+    for(int i=0; i<a2.length; i++){
+        a2[i] = scn.nextInt();
+    }
+    
+    int[] ans = new int[a2.length];
+    
+    // substraction
+    
+    int i=a1.length -1;
+    int j=a2.length -1;
+    
+    int borrow = 0;
+    
+    
+    while(j>=0){
+        
+        int fn = 0;
+        int sn = 0;
+        
+        if(j>=0){
+            fn = a2[j] - borrow;
+        }
+        
+        if(i>=0){
+            sn = a1[i];
+        }
+        
+        if(fn<sn){
+            borrow = 1;
+            fn = fn+10;
+        }else{
+            borrow = 0;
+        }
+
+        ans[j]= fn-sn;
+        
+        i--;
+        j--;
+    }
+    
+    System.out.print("substraction is  ");
+    
+    for(int val:ans){
+        
+        System.out.print(val);
+    }
+    
+  }
+}
