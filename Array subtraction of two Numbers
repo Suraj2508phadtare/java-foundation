@@ -90,13 +90,21 @@ public class MyClass {
         i--;
         j--;
     }
-    
-    System.out.print("substraction is  ");
-    
-    for(int val:ans){
-        
-        System.out.print(val);
-    }
+    int idx=0;
+    // count first 0 present in array
+     while(idx<=ans.length){
+      if(ans[idx] == 0){
+          idx++;
+      }else{
+          break;
+      }
+  }
+
+   System.out.print("substraction is  ");
+   while(idx<=ans.length-1){
+       System.out.print(ans[idx]);
+       idx++;
+   }
     
   }
 }
