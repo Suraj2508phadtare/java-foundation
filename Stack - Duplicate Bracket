@@ -1,0 +1,57 @@
+Question____________________________________________
+Duplicate Bracket
+
+input 
+1) (a+b)+((c+d)) 
+2) ((a+b)+(c+d))
+
+output
+1) True
+2) false
+
+
+Solution____________________________________________
+
+//duplicate brackets
+
+import java.util.*;
+import java.io.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+  
+      Scanner scn = new Scanner(System.in);
+      String str = scn.nextLine();
+      
+      Stack<Character> st = new Stack<>();
+      
+      for(int i=0; i<str.length(); i++){
+          char ch = str.charAt(i);
+          
+          if(str.charAt(0) == ')'){
+              System.out.println("True");
+              return;
+          }
+          
+          if(ch == ')'){
+              if(st.peek() == '('){
+                  // direct found opening bracket from closing it's means duplicate bracket present
+                  System.out.println("True");
+                  return;
+              }else{
+                  // pop till opening bracket
+                while(st.peek() != '('){
+                    st.pop();
+                }
+                st.pop();
+              }
+              
+          }else{
+             st.push(ch); 
+          }
+      }
+      
+      System.out.println("False");
+  }
+}
+
