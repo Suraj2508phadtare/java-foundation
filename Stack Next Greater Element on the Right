@@ -1,0 +1,71 @@
+Question__________________________________________
+Next Greter Element to Right
+// NGETR
+input
+2,5,9,3,1,12,6,8,7
+output
+5,9,12,12,12,-1,8,-1,-1
+
+// actul given input ans
+
+Enter Length of Array
+9
+Enter Array
+2
+5
+9
+3
+1
+12
+6
+8
+7
+Ans  5, 9, 12, 12, 12, -1, 8, -1, -1,
+
+Time Complxity
+On ---
+
+Solution_________________________________________
+
+
+//NGETR
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+  
+      Scanner scn = new Scanner(System.in);
+      System.out.println("Enter Length of Array");
+      
+      int l = scn.nextInt();
+      int[] arr = new int[l];
+      
+      System.out.println("Enter Array");
+      for(int i=0; i<l; i++){
+        arr[i] = scn.nextInt(); 
+      }
+      Stack<Integer> st = new Stack<>();
+      
+      int[] ans = new int[arr.length];
+      st.push(arr.length-1);
+      ans[arr.length -1] = -1;
+      
+      for(int i=arr.length-2; i>=0; i--){
+         
+         while(st.size() > 0 && st.peek()<=arr[i]){
+             st.pop();
+         }
+         
+         if(st.size() == 0){
+            ans[i] = -1;
+         }else{
+             ans[i] = st.peek();
+         }
+         st.push(arr[i]);
+      } 
+      for (int val : ans){
+         System.out.print("Ans  "+val + ", "); 
+      }
+  }
+}
