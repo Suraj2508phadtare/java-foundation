@@ -5,6 +5,16 @@ input -
 Output -
 Ans --  
 1,2,3,1,1,6,1,2,1,
+explanation -
+if greter number find to the left side idx of that num and current number idx is stock span if not have greater
+element then position will add of number
+
+2--0--1
+5--1--2
+9--2--3
+3--4-3--1, //stock span
+1--5-4--1
+12--
 
 Solution
 
@@ -43,11 +53,7 @@ public class MyClass {
         
          st.push(i);
     }
-    
-    if(st.size() > 0){
-        arr[st.peek()] = 1;
-        st.pop();
-    }
+
     System.out.println("Ans --  ");
     for(int val:ans){
         System.out.print(val+",");
