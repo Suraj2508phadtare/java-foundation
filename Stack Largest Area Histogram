@@ -1,0 +1,79 @@
+Question_______________________________________________
+
+1) You are given a number n representing the size of array n,
+2) given are n numbers reparting the height of bars in a chart
+3) you are required to find print the area of reactangle in the histogram.
+
+(6,2,5,4,5,1,6) ----> 4 * 3 = 12 
+
+solution_____________________________________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    Scanner scn = new Scanner(System.in);
+    System.out.println("Enter length of array");
+    int l = scn.nextInt();
+    
+    int[] arr = new int[l];
+    
+    for(int i=0; i<arr.length; i++){
+        arr[i] = scn.nextInt();
+    }
+    
+   // int[] arr = {6,2,5,4,5,1,6};
+    
+    // rb
+    int[] rb = new int[arr.length];
+    Stack<Integer> st1 = new Stack<>();
+    rb[rb.length-1] = arr.length;
+    st1.push(arr.length-1);
+    
+    for(int i=rb.length-2; i>=0; i--){
+        while(st1.size()>0 && arr[i] <= arr[st1.peek()]){
+            st1.pop();
+        }
+        if(st1.size() == 0){
+            rb[i] = arr.length;
+        }else{
+            rb[i] = st1.peek();
+        }
+        
+        st1.push(i);
+    }
+    
+    // lb
+    int[] lb = new int[arr.length];
+    Stack<Integer> st2 = new Stack<>();
+    lb[0] = -1;
+    st2.push(0);
+    
+    
+    for(int i=1; i<lb.length; i++){
+        while(st2.size()>0 && arr[i]<=arr[st2.peek()]){
+            st2.pop();
+        }
+        
+        if(st2.size() == 0){
+            lb[i] = -1;
+        }else{
+            lb[i] = st2.peek();
+        }
+        
+        st2.push(i);   
+    }
+    // largest area
+    int maxArea = 0;
+    
+    for(int i=0;i<arr.length; i++) {
+        int width = rb[i]-lb[i]-1;
+        int area = arr[i]*width;
+        
+        if(area>maxArea){
+           maxArea = area;
+        }
+    }
+    System.out.println("Largest area is " + maxArea);
+  }
+}
