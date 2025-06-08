@@ -1,0 +1,74 @@
+Question__________________________________________________
+// sliding window maximum
+You are given n representing size of array arr
+you are given n number representing elements in arr
+you are given number k representing size of window
+You are required  find and print maximum element in every window of size k
+
+input
+2,9,3,8,1,7,12,6,14,4,32,0,7,19,8,12,6
+output
+9, 9, 8, 12, 12, 14, 14, 32, 32, 32, 32, 19, 19, 19,
+
+Solution___________________________________________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    Scanner scn = new Scanner(System.in);
+    System.out.println("Enter Length of Array");
+    int l = scn.nextInt();
+    System.out.println("Enter value of k");
+    int k = scn.nextInt();
+    
+    int[] arr = new int[l];
+    
+    System.out.println("Enter a Array");
+    
+    for(int i=0; i<arr.length; i++){
+        arr[i] = scn.nextInt();
+    }
+    
+    // int[] arr = {2,9,3,8,1,7,12,6,14,4,32,0,7,19,8,12,6};
+    // int k = 4;
+    
+    // find largest Num
+    
+    Stack<Integer> st = new Stack<>();
+    int[] nge = new int[arr.length];
+    nge[arr.length-1] = arr.length;
+    st.push(arr.length-1);
+    
+    for(int i=arr.length-2; i>=0; i--){
+        
+        while(st.size() > 0 && arr[i]>arr[st.peek()]){
+            st.pop();
+        }
+        
+        if(st.size() == 0){
+            nge[i] = arr.length;
+        }else{
+            nge[i] = st.peek();
+        }
+        
+        st.push(i);
+    }
+    
+    // find sliding window
+    
+    int j =0;
+    
+    for(int i=0; i<=arr.length-k; i++){
+        if(i>j){
+            j=i;
+        }
+        
+        while(nge[j]<i+k){
+            j = nge[j];
+        }
+        
+        System.out.print(arr[j]+", ");
+    }
+  }
+}
