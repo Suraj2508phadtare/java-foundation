@@ -1,0 +1,106 @@
+Question________________________________________
+
+You are given Infix expression
+You are required to evaluate and print the value
+
+Input Format 
+input manage for you 
+1) 2+(5-3*6/2)
+2) 2+6*4/8-3
+
+output Format
+Value of Infix expression 
+1) ans -2
+2) ans 2
+
+Constraints___
+The Expression is Balanced
+the only erpression used are +,-,*,/
+opening and closing brackets () are used to impact precedence of opeation
+in two operators of equal precedence give prefereance to the one on left
+All operands are single digit numbers
+
+
+Solution______________________________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    Scanner scn = new Scanner(System.in);
+    String exp = scn.nextLine();
+    
+    Stack<Integer> stDig = new Stack<>();
+    Stack<Character> stOpe = new Stack<>();
+    
+    for(int i=0; i<exp.length(); i++){
+        char ch = exp.charAt(i);
+        
+        if(ch == '('){
+           stOpe.push('('); 
+        }else if(Character.isDigit(ch)){
+            stDig.push(ch-'0');
+        }else if(ch == ')'){
+            while(stOpe.peek() != '('){
+                int v2 = stDig.pop();
+                int v1 = stDig.pop();
+                char chh = stOpe.pop();
+                
+                int val = operation(v1, v2, chh);
+                
+                stDig.push(val);
+            }
+            
+            stOpe.pop();
+        }else if(stOpe.size()>0 && stOpe.peek() != '(' && percedence(ch)<=percedence(stOpe.peek())){
+             int v2 = stDig.pop();
+             int v1 = stDig.pop();
+             char chh = stOpe.pop();
+                
+             int val = operation(v1, v2, chh);
+                
+             stDig.push(val);
+             
+             stOpe.push(ch);
+        }else{
+            stOpe.push(ch);
+        }
+    }
+    
+    while(stOpe.size() != 0){
+        int v2 = stDig.pop();
+        int v1 = stDig.pop();
+        char ch = stOpe.pop();
+        
+        int val = operation(v1,v2,ch);
+        stDig.push(val);
+    }
+    
+    System.out.println(stDig.peek());
+    
+  }
+  
+  public static int percedence(char chh){
+      if(chh == '+'){
+          return 1;
+      }else if(chh == '-'){
+          return 1;
+      }else if(chh == '*'){
+          return 2;
+      }else{
+          return 2;
+      }
+  }
+  
+  public static int operation(int v1, int v2, char ch){
+      if(ch == '+'){
+          return v1+v2;
+      }else if(ch =='-'){
+          return v1-v2;
+      }else if(ch == '*'){
+          return v1*v2;
+      }else{
+          return v1/v2;
+      }
+  }
+}
