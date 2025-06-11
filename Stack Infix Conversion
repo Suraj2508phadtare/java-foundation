@@ -1,0 +1,135 @@
+Quetion____________________
+
+
+Solution________________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+   
+   Scanner scn = new Scanner(System.in);
+   String exp = scn.nextLine();
+   
+   Stack<Character> operators = new Stack<>();
+   Stack<String> postSt = new Stack<>();
+   Stack<String> preSt = new Stack<>();
+   
+   for(int i=0; i<exp.length(); i++){
+       char ch = exp.charAt(i);
+       
+       if(ch == '('){
+           operators.push('(');
+       }else if(Character.isLetter(ch) || Character.isDigit(ch)){
+           postSt.push(String.valueOf(ch));
+           preSt.push(String.valueOf(ch));
+       }else if(ch == ')'){
+           while(operators.peek() != '('){
+               // prefix
+               String v2 = preSt.pop();
+               String v1 = preSt.pop();
+                char chh = operators.pop();
+               
+               String preVal = prefixBuild(v1,v2,chh);
+               preSt.push(preVal);
+               
+               // postfix
+                v2 = postSt.pop();
+                v1 = postSt.pop();
+
+               
+               String postVal = postfixBuild(v1,v2,chh);
+               postSt.push(postVal);
+           }
+           
+           operators.pop();
+       }else if(operators.size()>0 && operators.peek() != '(' && precedence(operators.peek())<=precedence(ch)){
+            // prefix
+               String v2 = preSt.pop();
+               String v1 = preSt.pop();
+                char chh = operators.pop();
+               
+               String preVal = prefixBuild(v1,v2,chh);
+               preSt.push(preVal);
+               
+               // postfix
+                v2 = postSt.pop();
+                v1 = postSt.pop();
+
+               
+               String postVal = postfixBuild(v1,v2,chh);
+               postSt.push(postVal);
+               
+               operators.push(ch);
+       }else{
+           operators.push(ch);
+       }
+   }
+   
+   while(operators.size()>0){
+        // prefix
+               String v2 = preSt.pop();
+               String v1 = preSt.pop();
+                char chh = operators.pop();
+               
+               String preVal = prefixBuild(v1,v2,chh);
+               preSt.push(preVal);
+               
+               // postfix
+                v2 = postSt.pop();
+                v1 = postSt.pop();
+
+               
+               String postVal = postfixBuild(v1,v2,chh);
+               postSt.push(postVal);
+   }
+   
+   System.out.println("Prefix");
+   System.out.println(preSt.peek());
+   
+   System.out.println("Postfix");
+   System.out.println(postSt.peek());
+   
+  }
+  
+  public static int precedence(char ch){
+      if(ch == '+'){
+          return 1;
+      }else if(ch == '-'){
+          return 1;
+      }else if(ch == '*'){
+          return 2;
+      } else{
+          return 2;
+      }
+  }
+  
+  public static String prefixBuild(String v1, String v2, char ch){
+      
+      if(ch == '+'){
+          return "+"+v1+v2;
+          
+      }else if(ch == '-'){
+          return "-"+v1+v2;
+      }else if(ch == '*'){
+          return "*"+v1+v2;
+      }else{
+          return "/"+v1+v2;
+      }
+      
+  }
+  
+   public static String postfixBuild(String v1, String v2, char ch){
+      
+      if(ch == '+'){
+          return v1+v2+"+";
+      }else if(ch == '-'){
+          return v1+v2+"-";
+      }else if(ch == '*'){
+          return v1+v2+"*";
+      }else{
+          return v1+v2+"/";
+      }
+      
+  }
+}
