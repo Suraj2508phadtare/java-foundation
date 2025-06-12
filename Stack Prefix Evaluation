@@ -1,0 +1,81 @@
+Question__________________________________
+Prefix Evalution
+You are given prefix Evaluations
+You are required to evaluate and print the value
+You are required to convert to infix and print
+You are required to convert to postfix and print
+
+Constraints
+Expression is valid prefix Expression
+Only Operators used are +,-,*,/
+All Operands are single digit numbers
+
+input 
+-+2/*6483
+output
+value --> 2
+infix --> ((2+((6*4)/8))-3
+postfix --> 264*8/+3-
+
+Solution_____________________________________
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    Scanner scn = new Scanner(System.in);
+    String exp = scn.nextLine();
+    
+    Stack<Integer> value = new Stack<>();
+    Stack<String> infix = new Stack<>();
+    Stack<String> postfix = new Stack<>();
+    
+    for(int i=exp.length()-1; i>=0; i--){
+        char ch = exp.charAt(i);
+        
+        if(ch == '+' || ch == '-' || ch == '*' || ch == '/'){
+            // value
+            int v1 = value.pop();
+            int v2 = value.pop();
+            
+            value.push(operation(v1,v2,ch));
+            
+            // infix
+            String inv1 = infix.pop();
+            String inv2 = infix.pop();
+            
+            String inVal = "("+inv1+ch+inv2+")";
+            infix.push(inVal);
+            
+            //postfix
+            
+            String pv1 = postfix.pop();
+            String pv2 = postfix.pop();
+            
+            String pVal = pv1+pv2+ch;
+            postfix.push(pVal);
+        }else{
+            
+            value.push(ch - '0');
+            infix.push(ch+"");
+            postfix.push(ch+"");
+
+        }
+    }
+    
+    System.out.println(value.peek());
+    System.out.println(infix.peek());
+    System.out.println(postfix.peek());
+  }
+  
+  public static int operation(int v1, int v2, char ch){
+      if(ch == '+'){
+          return v1+v2;
+      }else if(ch == '-'){
+          return v1-v2;
+      }else if(ch == '*'){
+          return v1*v2;
+      }else{
+          return v1/v2;
+      }
+  }
+}
