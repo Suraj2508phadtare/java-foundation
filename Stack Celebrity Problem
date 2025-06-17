@@ -1,0 +1,61 @@
+Quetion_________________________________
+Celebrity Problem
+
+1) You are given n number in arr with 0, and 1 value,
+2) Yoy have find celebrity
+3) celebrity does not know everyone and but everyone will know celebrity 
+
+inout ---
+int[][] arr= {{0,0,1,0},{1,0,1,1},{0,0,0,0},{1,0,1,0}};
+output ---
+2
+
+Solution____________________________________
+
+import java.util.*;
+
+public class MyClass {
+  public static void main(String args[]) {
+    //Scanner scn = new Scanner(System.in);
+    int[][] arr= {{0,0,1,0},{1,0,1,1},{0,0,0,0},{1,0,1,0}};
+    
+    // for(int i=0; i<arr.length; i++){
+    //     for(int j=0; j<arr.length; j++){
+    //         System.out.print(arr[i][j] + ", ");
+    //     }
+    //     System.out.println();
+    // }
+    
+    Stack<Integer> st = new Stack<>();
+    
+    for(int i=0; i<arr.length; i++){
+        st.push(i);
+    }
+    
+    while(st.size() >=2){
+        int i = st.pop();
+        int j = st.pop();
+        
+        if(arr[i][j] == 1){
+            // if i knows j --> then i is not celebrity
+            st.push(j);
+        }else{
+            // if i doesnot know j --> j not celebrity
+            st.push(i);
+        }
+    }
+    
+    int pot = st.pop();
+    // find exact celebrity from travel row and colomn
+    for(int i=0; i<arr.length; i++){
+        if(arr[pot][i] != 0){
+            if(arr[pot][i] != 0 || arr[i][pot] != 1){
+                System.out.println("No Celebrity");
+                return;
+            }
+        }
+    }
+    
+    System.out.println(pot);
+  }
+}
