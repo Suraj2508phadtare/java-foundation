@@ -1,0 +1,85 @@
+Question___________________________________________________________________
+Build Normal stack
+
+Solution________________________________________________________________
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+    CustomStack st = new CustomStack(5);
+    
+    st.push(5);
+    st.display();
+    st.push(10);
+    st.size();
+    st.peek();
+    st.pop();
+    st.display();
+    
+      
+    // pop
+    // push
+    // size
+    // display
+    // peek
+    }
+    
+      public static class CustomStack{
+      int[] arr;
+      int counter;
+      
+      CustomStack(int l){
+          this.arr = new int[l];
+          this.counter = -1;
+      }
+      
+      // size
+      
+      void size(){
+         System.out.println(counter+1);
+      }
+      
+      // push
+      
+      void push(int num){
+          if(arr.length-1 == counter){
+              System.out.println("stack is overflow");
+          }else{
+              counter++;
+              arr[counter] = num;
+          }
+      }
+      //pop
+      
+      void pop(){
+          if(counter == -1){
+              System.out.println("Exception Stack is empty");
+          }else{
+              int val = arr[counter];
+              counter--;
+              System.out.println(val);
+          }
+      }
+      
+      // peek 
+      
+      void peek(){
+          if(counter == -1){
+              System.out.println("Exception stack is empty");
+          }else{
+              System.out.println(arr[counter]);
+          }
+      }
+      // display
+       void display(){
+          if(counter == -1){
+              System.out.println("Exception stack is empty");
+          }else{
+              for(int i=counter; i>=0; i--){
+                  System.out.print(arr[counter] + " ");
+              }
+              System.out.println();
+          }
+      }
+      }
