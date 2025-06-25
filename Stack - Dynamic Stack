@@ -1,0 +1,96 @@
+Question_________________________________________________
+Dynamic custom stack 
+add double length when stack is full
+
+input----
+ st.push(10);
+        st.push(20);
+        st.push(30);
+        st.push(40);
+        st.push(50);
+        st.push(60);
+        st.push(70);
+        
+        st.display();
+
+output ----
+
+70 60 50 40 30 20 10 
+
+Solution_____________________________________________________
+
+public class MyClass {
+  public static void main(String args[]) {
+    
+    CoustmStack st = new CustomStack(5);
+    
+    st.push(5);
+    st.display();
+      
+    // pop
+    // push
+    // size
+    // display
+    // peek
+    
+  }
+  
+  public static class CustomStack{
+      int[] arr;
+      int counter;
+      
+      CustomStack(int l){
+          this.arr = new arr[l];
+          this.counter = -1;
+      }
+      
+      // size
+      
+      public static void size(){
+         System.out.println(counter+1);
+      }
+      
+      // push
+      
+      public static void push(int num){
+          if(arr.length-1 == counter){
+              System.out.println("stack is overflow");
+          }else{
+              counter++;
+              arr[counter] = num;
+          }
+      }
+      //pop
+      
+      public static void pop(){
+          if(counter == -1){
+              System.out.println("Exception Stack is empty");
+          }else{
+              int val = data[counter];
+              counter--;
+              System.out.println(val);
+          }
+      }
+      
+      // peek 
+      
+      public static void peek(){
+          if(counter == -1){
+              System.out.println("Exception stack is empty");
+          }else{
+              System.out.println(arr[counter]);
+          }
+      }
+      // display
+      public static void display(){
+          if(counter == 1){
+              System.out.println("Exception stack is empty");
+          }else{
+              for(int i=counter; i>=0; i--){
+                  System.out.print(arr[counter] + " ");
+              }
+              System.out.println();
+          }
+      }
+  }
+}
