@@ -1,0 +1,87 @@
+Question________________________________________________
+find minimum number from stack in On notation
+
+input -- 10,2,100,67,1
+output -- 1
+
+Solution____________________________________________________
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        CustomStack st = new CustomStack(5);
+        
+        st.push(10);
+        st.push(2);
+        st.push(100);
+        st.push(67);
+        st.push(1);
+        st.pop();
+        st.minimumStack();
+        st.display();
+    }
+    
+    public static class CustomStack{
+        int[] arr;
+        int[] minArr;
+        int counter;
+        int minCounter;
+        CustomStack(int l) {
+            this.arr = new int[l];
+            this.minArr = new int[l];
+            this.counter = -1;
+            this.minCounter = -1;
+        }
+        
+        //top
+        
+        void peek() {
+            if(counter == -1){
+             System.out.println("Exception Stack is Empty");   
+            }else{
+            System.out.println(arr[counter]);
+            }
+        }
+        
+        //pop
+        
+        void pop() {
+            if(counter == -1){
+                System.out.println("Exception Stack is Empty");
+            }else{
+                System.out.println(arr[counter]);
+                if(arr[counter] == minArr[minCounter]){
+                    minCounter--;
+                }
+                counter--;
+            }
+        }
+        
+        // push
+        void push(int val){
+            if(counter == arr.length-1){
+                System.out.println("Stack is Full");
+            }else{
+                counter++;
+                arr[counter] = val;
+                if(counter == 0 || val < minArr[minCounter] ){
+                   minCounter++;
+                   minArr[minCounter] = val;
+                }
+                
+            }
+        }     
+        //minimum 
+        
+        void minimumStack() {
+            System.out.println(minArr[minCounter]);
+        }
+        
+        void display(){
+            for(int i=0; i<minArr.length; i++){
+                System.out.print(minArr[i] + " ");
+            }
+        }
+    }
+}
