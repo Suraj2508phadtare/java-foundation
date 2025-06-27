@@ -1,0 +1,89 @@
+Question______________________________________________________________________
+
+You are required to the complete the code of our MinStack
+As data member you are one stack minimum element is availabled in the class
+here is list of task need to complete
+
+push --> accept data in LIFO manner
+Pop --> Should remove data in LIFO manner,
+top --> return top calue
+size --> should return number of element available in the stack
+min --> should return smallest element available in the stack
+
+input 4, 8, 2, 10, 16
+outpot 2
+
+Solution_______________________________________________________________________
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        MinimumStack mSt = new MinimumStack();
+        mSt.minPush(4);
+        mSt.minPush(8);
+        mSt.minPush(2);
+        mSt.minPush(10);
+        mSt.minPush(16);
+        
+        // pop
+        
+        mSt.minPop();
+        mSt.minPop();
+        mSt.minPop();
+        
+        mSt.min();
+    }
+    
+    public static class MinimumStack{
+        Stack<Integer> st = new Stack<>();
+        int min = 0;
+        
+        // size
+        void minSize(){
+            System.out.println(st.size());
+        }
+        
+        void min(){
+            System.out.println(min);
+        }
+        
+        // top / peek
+        
+        void minPeek(){
+            if(st.size() == 0){
+                System.out.println("Stack is Empty");
+            }else{
+                System.out.println(st.peek());
+            }
+        }
+        
+        // push 
+        
+        void minPush(int val){
+            if(st.size() == 0 || val < min ){
+                st.push(val+(val- min));
+                min = val;
+            }else{
+                st.push(val);
+            }
+        }
+        
+        void minPop(){
+            if(st.size() == 0){
+               System.out.println("Stack is Empty"); 
+            }else{
+                if(st.peek() < min){
+                    int val = min;
+                    min = 2 * min - st.peek();
+                    st.pop();
+                }else{
+                    st.pop();
+                }
+            }
+        }
+    
+    }
+}
