@@ -1,0 +1,124 @@
+Question______________________________________________________________________
+get value in Linked List
+1) first
+2) Last
+3) idx value
+
+Add First in Linked List
+
+Solution_________________________________________________________________________
+
+public class MyClass {
+
+  public static class Node{
+      int data;
+      Node next;
+  }    
+    
+  public static class LinkdedList{
+      Node head;
+      Node tail;
+      int size;
+      
+      void add(int val){
+           Node temp = new Node();
+           temp.data = val;
+           temp.next = null;
+          if(size == 0){
+              head = tail = temp;
+              size++;
+          }else{
+              tail.next = temp;
+              tail = temp;
+              size++;
+          }
+      }
+      
+      void size(){
+          System.out.println(size);
+      }
+      
+      void display() {
+          Node temp = head;
+          for(int i=0; i<size; i++) {
+              System.out.println(temp.data);
+              temp = temp.next;
+          }
+          System.out.println();
+      }
+      
+      // remove
+      
+      void removeFirst(){
+          head = head.next;
+          size--;
+      }
+      
+      // get first
+      
+      void getFirst(){
+          if(size == 0){
+             System.out.println("linked List is empty");    
+          }else{
+             System.out.println("first element "+head.data);
+          }
+          
+      }
+      
+      void getLast(){
+          if(size == 0){
+            System.out.println("linked List is empty");  
+          }else{
+            System.out.println("last element " +tail.data);  
+          }
+          
+      }
+      
+      void getAt(int idx) {
+          
+         if(size == 0){
+            System.out.println("Linked List is empty"); 
+         }else{
+          Node temp = head;
+          
+          for(int i=0; i<idx; i++){
+              temp = temp.next;
+          }
+          
+          System.out.println("data on "+ idx + " is "+temp.data); 
+         }
+      }
+      
+     void addFirst(int val){
+         Node temp = new Node();
+         temp.data = val;
+         temp.next = head;
+         head = temp;
+         size++;
+      }
+      
+  }
+  public static void main(String args[]) {
+    
+    LinkdedList ll = new LinkdedList();
+    
+    ll.add(10);
+    ll.add(20);
+    ll.add(30);
+    ll.add(40);
+    ll.add(50);
+    
+    
+    ll.removeFirst();
+    
+    ll.display();
+    ll.getFirst();
+    ll.getLast();
+    
+    ll.getAt(2);
+    
+    ll.addFirst(1000);
+    
+    ll.display();
+  }
+}
