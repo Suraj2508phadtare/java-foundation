@@ -1,8 +1,9 @@
 Question________________________________________________________________________
 
-
-
-
+Add Value to the index in linked List
+Add Value Fisrt 
+Add Value in last
+if the index is greater than size the show Message "Invalid Argument"
 
 
 
