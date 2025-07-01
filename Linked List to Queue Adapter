@@ -1,0 +1,77 @@
+Question____________________________________________
+
+Linked List to Queue Adapter
+
+
+
+Solution_____________________________________________________
+
+import java.util.*;
+
+class Main {
+    
+    public static class QueueAdapter{
+        LinkedList<Integer> ll;
+        
+        QueueAdapter() {
+            ll = new LinkedList<>();
+        }
+        
+        // add
+        void add(int val) {
+            ll.addLast(val);
+        }
+        
+        // remove
+        void remove() {
+            if(size() == 0){
+                System.out.println("Queue is underflow");
+            }else{
+                ll.removeFirst();
+            }
+        }
+    
+        // peek
+        int peek() {
+            if(size() == 0){
+                System.out.println("Queue is underflow");
+                return -1;
+            }else{
+                return ll.getFirst();
+            }
+        }
+        
+        // size
+        int size() {
+            return ll.size();
+        }
+        
+        // display
+        void display() {
+            ListIterator<Integer> it  = ll.listIterator();
+            
+            while(it.hasNext()){
+                System.out.print(it.next() + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+     
+        QueueAdapter qa = new QueueAdapter();
+        
+        qa.add(10);
+        qa.add(20);
+        qa.add(30);
+        qa.add(40);
+        
+        qa.remove();
+        
+        System.out.println(qa.peek());
+        System.out.println(qa.size());
+        
+        qa.display();
+    }
+}
