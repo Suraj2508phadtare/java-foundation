@@ -1,0 +1,85 @@
+Question_______________________________________________
+Linked List to Stack Adaptor
+Here are list of function that you are supposed to complete
+Push - should accept the new data LIFO manner
+pop - Should remove and return data in LIFO manner if data is not present the print "stack underflow";
+Peek - Should return data in LIFO manner, if data is not availabel then print "Print Underflow"
+size - Should return the number of element available in Stack
+
+Solution________________________________________________
+
+import java.util.*;
+
+class Main {
+    
+    public static class StackAdapter{
+        LinkedList<Integer> ll;
+       // int size;
+        
+        StackAdapter(){
+            ll = new LinkedList<>();
+          //  size =0;
+        }
+        
+        // size
+        int size(){
+             int val = ll.size();
+             return val;
+        }
+        
+        // peek
+        int peek(){
+            if(ll.size() == 0){
+             System.out.println("Stack Underflow");
+             return -1;
+            }else{
+           return ll.getFirst();
+            }
+        }
+        
+        // void push
+        
+        void push(int val){
+            ll.addFirst(val);
+        }
+        
+        void pop(){
+            if(ll.size() == 0){
+             System.out.println("Stack Underflow");
+            }else{
+             ll.removeFirst();   
+            }
+            
+        }
+        
+        void display(){
+            ListIterator<Integer> it = ll.listIterator();
+            while(it.hasNext()){
+                System.out.print(it.next() + " ");
+            }
+            System.out.println();
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        StackAdapter sa = new StackAdapter();
+        
+        sa.push(10);
+        sa.push(20);
+        sa.push(30);
+        sa.push(40);
+        
+        //sa.pop();
+       // sa.pop();
+        
+        sa.display();
+        
+        System.out.println(sa.peek());
+        
+        System.out.println(sa.size());
+    }
+}
+
