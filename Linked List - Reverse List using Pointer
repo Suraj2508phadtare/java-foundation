@@ -1,0 +1,78 @@
+Question______________________________________________________
+
+Linked List Reverse Linked List using Pointes
+
+input -- 10,20,30,40,50
+output -- 50,40,30,20,10
+
+
+Solution______________________________________________________
+
+class Main {
+    public static class Node{
+        int data;
+        Node next;
+    }
+    
+    public static class LinkedList{
+        
+        int size;
+        Node head;
+        Node tail;
+        
+        void add(int val){
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
+            if(size == 0){
+                head = tail = temp;
+                size++;
+            }else{
+                tail.next = temp;
+                tail = temp;
+                size++;
+            }
+        }
+        
+        void display(){
+            Node temp = head;
+            for(int i=0; i<size; i++){
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+        
+        void reverseByPointer(){
+            Node temp = head;
+            Node prevNode = temp;
+            for(int i=0; i<size; i++){
+                Node nNode = temp.next;
+                if(i == 0){
+                    temp.next = null;
+                    tail = temp;
+                }else{
+                  temp.next = prevNode;
+                }
+                prevNode = temp;
+                temp = nNode;
+            }
+            head = prevNode;
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        LinkedList ll = new LinkedList();
+        ll.add(10);
+        ll.add(20);
+        ll.add(30);
+        ll.add(40);
+        ll.add(50);
+        
+        ll.reverseByPointer();
+        
+        ll.display();
+    }
+}
