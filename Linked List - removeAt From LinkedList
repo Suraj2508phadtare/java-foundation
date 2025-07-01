@@ -1,0 +1,117 @@
+Quetion___________________________________________________________
+
+RemoveAt idx node in linked List
+
+size = 0 -- head = tail = null
+size == 2 and idx  == 1 head = head.next
+idx == size -- tail = prev tail become new tail
+
+
+
+Solution__________________________________________________________
+
+class Main {
+     public static class Node{
+      int data;
+      Node next;
+  }    
+  
+  public static class LinkedList{
+       Node head;
+       Node tail;
+       int size;
+       
+       void add(int val){
+           Node temp = new Node();
+           temp.data = val;
+           temp.next = null;
+           
+          if(size == 0){
+              head = tail = temp;
+              size++;
+          }else{
+             tail.next = temp;
+             tail = temp;
+             size++;
+          }
+       }
+       
+       void display(){
+           Node temp = head;
+           for(int i=0; i<size; i++){
+               System.out.print(temp.data + " ");
+               temp = temp.next;
+           }
+           System.out.println();
+       }
+       
+       void removeLast() {
+           if(size == 0){
+               System.out.println("Invalid Argument");
+           }else if(size == 1){
+               head = tail = null;
+               size--;
+           }else{
+               Node temp = head;
+               for(int i=0; i<size-1; i++){
+                   temp = temp.next;
+               }
+               temp.next = null;
+               tail = temp;
+               
+               size--;
+           }
+       }
+       
+    void removeAt(int idx){
+        if(size == 0){
+            System.out.println("Linked List is Empty");
+        }else if(idx < 0 || idx >= size){
+            System.out.println("Invalid Argumnet");
+        }
+        else if(size == 1 && idx == 0) {
+            head = tail = null;
+            size--;
+        }else if(idx == 0){
+            Node temp  = head;
+            head = head.next;
+            temp.next = null;
+            size--;
+        }else if(idx == size-1){
+           removeLast();   
+        }else{
+            Node prevNode = head;
+            
+            for(int i=0; i<idx-1; i++){
+                prevNode =prevNode.next;
+            }
+            
+            Node removeNode = prevNode.next;
+
+            prevNode.next = removeNode.next;
+            removeNode.next = null;
+            size--;
+            
+        }
+    }   
+  }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+         LinkedList  ll = new LinkedList();
+    
+     ll.add(10);
+     ll.add(20);
+    ll.add(30);
+    ll.add(40);
+    ll.add(50);
+    
+   // ll.removeLast();
+    
+    ll.removeAt(2);
+    
+    ll.display();
+    }
+}
+
