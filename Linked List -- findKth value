@@ -1,0 +1,84 @@
+Question_____________________________________________
+find Linked List kth value
+
+You are required to complete the body KthFromLast function should be and iterative funtion should the Kth node from of linked list,
+Also make sure not used size data member directly or indirectly k is zero based index, assume that valid value k will paased.
+
+
+Solution________________________________________________
+
+import java.util.*;
+
+class Main {
+    
+    public static class Node {
+        int data;
+        Node next;
+    }
+    
+    public static class LinkedList {
+        int size;
+        Node head;
+        Node tail;
+        
+        int size() {
+            return size;
+        }
+
+        void add(int val) {
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
+            
+            if(size == 0){
+              head = tail = temp;
+              size++;
+            }else{
+              tail.next = temp;
+              tail = temp;
+              size++;
+            }
+        }
+        
+        void display() {
+            Node temp = head;
+            
+            for(int i=0; i<size; i++) {
+                System.out.print(temp.data +" ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+        
+        void findKth(int idx) {
+            Node s = head;
+            Node f = head;
+            
+            for(int i=0; i<idx; i++) {
+                f = f.next;
+            }
+            
+            while(f != tail) {
+                s = s.next;
+                f = f.next;
+            }
+            
+            System.out.println(s.data);
+        }
+    }
+    
+    public static void main(String[] args) {
+      System.out.println("Try programiz.pro");
+      
+      LinkedList ll = new LinkedList();
+      
+      ll.add(10);
+      ll.add(20);
+      ll.add(30);
+      ll.add(40);
+      ll.add(50);
+      
+      ll.display();
+      ll.findKth(1);
+    }
+}
