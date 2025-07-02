@@ -1,0 +1,83 @@
+Question__________________________________________________
+
+You are required to complete body of mid function, The function should be iterative function and return mid of the Linked List,
+Also make sure not use size data member directly or indirectly(by calculating size while traversal). in linked List odd size is unambigous,
+in linked list of even size, consider the end of first half as mid..
+
+Solution__________________________________________________
+
+import java.util.*;
+class Main {
+    
+    public static class Node {
+        int data;
+        Node next;
+    }
+    
+    public static class LinkedList {
+        int size;
+        Node head;
+        Node tail;
+        
+        int size() {
+            return size;
+        }
+
+        void add(int val) {
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
+            
+            if(size == 0){
+              head = tail = temp;
+              size++;
+            }else{
+              tail.next = temp;
+              tail = temp;
+              size++;
+            }
+        }
+        
+        void display() {
+            Node temp = head;
+            
+            for(int i=0; i<size; i++) {
+                System.out.print(temp.data +" ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+        
+        void findMid() {
+            Node f = head;
+            Node mid = head;
+            
+            
+            while(f.next != null && f.next.next != null){
+                f=f.next.next;
+                mid = mid.next;
+            }
+            System.out.println(mid.data + " ");
+        }
+    }
+    
+    
+    public static void main(String[] args) {
+      System.out.println("Try programiz.pro");
+      
+      LinkedList ll = new LinkedList();
+      
+      ll.add(10);
+      ll.add(20);
+      ll.add(30);
+      ll.add(40);
+      ll.add(50);
+     // ll.add(60);
+     // ll.add(70);
+      
+      ll.display();
+     // ll.findKth(1);
+     
+     ll.findMid();
+    }
+}
