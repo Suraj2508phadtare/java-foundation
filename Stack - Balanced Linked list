@@ -1,0 +1,64 @@
+Quetion_______________________________________________________________________
+
+Balanced Bracket
+
+You are string exp representing string expression
+You are required to check expression is balanced. opening and closing bracket are match up well.
+
+input
+String exp ="[(a+b) +{(c+d) * (e/f)]}"; 
+Output  // false
+
+input String exp ="[(a+b) + {(c+d) * (e+f)}]"; 
+output // true -- Balanced
+
+
+Solution____________________________________________________________________
+
+import java.util.*;
+public class MyClass {
+  public static void main(String args[]) {
+  // String exp ="[(a+b) +{(c+d) * (e/f)]}";  // false -- ] bracket closed before
+    String exp ="[(a+b) + {(c+d) * (e+f)}]";  // true -- Balanced
+   // String exp = "[(a+b) +{(c+d) *(e/f)}";   // false -- ] bracket miising
+   
+   // String exp = "{[(a+b) + {(c+d) *(e/f)}]";  // false -- one curly bracket missing
+    
+    Stack<Character> st = new Stack<>();
+   
+   for(int i=0; i<exp.length(); i++){
+       char ch = exp.charAt(i);
+       
+       if(ch == '{' || ch == '(' || ch == '['){
+           st.push(ch);
+       }else if(ch =='}'){
+           if(st.peek() == '{'){
+               st.pop();
+           }else{
+               System.out.println("Not Balanced");
+               return;
+           }
+       }else if(ch == ']'){
+           if(st.peek() == '['){
+               st.pop();
+           }else{
+               System.out.println("Not Balanced");
+               return;
+           }
+       }else if(ch == ')'){
+           if(st.peek()  == '('){
+               st.pop();
+           }else{
+               System.out.println("Not Balanced");
+               return;
+           }
+       }
+   }
+   
+   if(st.size() != 0){
+       System.out.println("Not Balanced");
+   }else{
+        System.out.println("Balanced"); 
+   }
+  }
+}
