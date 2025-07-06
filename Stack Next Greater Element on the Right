@@ -48,7 +48,7 @@ public class MyClass {
       Stack<Integer> st = new Stack<>();
       
       int[] ans = new int[arr.length];
-      st.push(arr.length-1);
+      st.push(arr[arr.length-1]);
       ans[arr.length -1] = -1;
       
       for(int i=arr.length-2; i>=0; i--){
