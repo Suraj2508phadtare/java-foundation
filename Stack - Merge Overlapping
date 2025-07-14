@@ -26,63 +26,61 @@ import java.util.*;
 class Main {
     public static void main(String[] args) {
         System.out.println("Try programiz.pro");
+        
+      int[][] arr = {{22,28},{1,8},{25,27},{14,19},{27,30},{5,12}};
+      
+      Pair[] pair = new Pair[arr.length];
+      
+      for(int i=0; i<arr.length; i++){
+          pair[i] = new Pair(arr[i][0], arr[i][1]);
+      }
+      
+      Arrays.sort(pair);
+      Stack<Pair> st = new Stack<>();
+      
+      for(int i=0; i<pair.length; i++){
+          if(st.size() == 0){
+              st.push(pair[i]);
+          }else{
+              Pair top = st.peek();
+              
+              if(top.et > pair[i].st){
+                  top.et = Math.max(top.et, pair[i].et);
+              }else{
+                  st.push(pair[i]);
+              }
+          }
+      }
+      
+       Stack<Pair> rv = new Stack<>();
     
-        int[][] arr = {{22,28},{1,8},{25,27},{14,19},{27,30},{5,12}};
-        Pair[] pair = new Pair[arr.length];
-        
-        for(int i=0; i<arr.length; i++){
-            pair[i] = new Pair(arr[i][0], arr[i][1]);
-        }
-        
-        Arrays.sort(pair);
-        Stack<Pair> st = new Stack<>();
-        
-        for(int i=0; i<pair.length; i++){
-            if(st.size() == 0){
-                st.push(pair[i]);
-            }else{
-                Pair top = st.peek();
-                
-                if(pair[i].st > top.et){
-                    st.push(pair[i]);
-                }else{
-                    top.et = Math.max(top.et, pair[i].et);
-                }
-            }
-        }
-        
-        Stack<Pair> rv = new Stack<>();
-        
-        while(st.size() !=0){
-            rv.push(st.pop());
-        }
-        
-        while(rv.size() != 0){
-            Pair top = rv.pop();
-            
-            System.out.println(top.st + " " + top.et);
-        }
-        
+    while(st.size() > 0){
+        rv.push(st.pop());
     }
     
-    public static class Pair implements Comparable<Pair>{
+    while(rv.size()!=0){
+        Pair pp = rv.pop();
+        System.out.println(pp.st + " "+pp.et);
+    }
+    }
+    
+   
+ 
+   public static class Pair implements Comparable<Pair> {
         int st;
         int et;
         
-        Pair(int st, int et) {
-            this.st = st;
-            this.et = et;
-        }
-        public int compareTo(Pair other){
-            // this st > other st ----> +ve
-            // this == this ------> zero
-            // this < other -------> -ve
-            if(this.st != other.st){
-                return this.st - other.st;
-            }else{
-                return this.et - this.et;
+         Pair(int st, int et){
+                this.st = st;
+                this.et = et;
             }
-         
+        
+        public int compareTo(Pair other){
+           if(this.st != other.st) {
+               return this.st - other.st;
+           }else{
+              return  this.et - other.et;
+           }
         }
-    }
+    }  
 }
