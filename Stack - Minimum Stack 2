@@ -16,74 +16,98 @@ outpot 2
 Solution_______________________________________________________________________
 
 import java.util.*;
-
 class Main {
     public static void main(String[] args) {
         System.out.println("Try programiz.pro");
         
-        MinimumStack mSt = new MinimumStack();
-        mSt.minPush(4);
-        mSt.minPush(8);
-        mSt.minPush(2);
-        mSt.minPush(10);
-        mSt.minPush(16);
+        MinimumStack mt = new MinimumStack(5,0);
+        mt.push(4);
+        mt.push(8);
+        mt.push(2);
+        mt.push(10);
+        mt.push(16);
         
-        // pop
+        mt.display();
+        mt.min();
         
-        mSt.minPop();
-        mSt.minPop();
-        mSt.minPop();
+        mt.pop();
+        mt.pop();
+        mt.pop();
         
-        mSt.min();
+        mt.display();
+        mt.min();
     }
     
-    public static class MinimumStack{
-        Stack<Integer> st = new Stack<>();
+    static class MinimumStack{
+        
+        int[] arr;
+        int size;
         int min = 0;
         
-        // size
-        void minSize(){
-            System.out.println(st.size());
+        MinimumStack(int length, int s){
+            this.arr = new int[length];
+            this.size = s;
         }
+        
+        // push
+        void push(int val){
+            if(size == 0){
+               arr[size] = val + (val - min);
+               min = val;
+            }else{
+               if(val < min){
+                   arr[size] = val + (val - min);
+                    min = val;
+               }else{
+                   arr[size] = val;
+               }
+            }
+            size++; 
+        }
+        
+        
+        //pop
+        void pop() {
+            if(size == 0){
+                System.out.println("Stack UnderFlow");
+            }else{
+                if(arr[size-1] < min){
+                    min = 2 * min  - arr[size-1];
+                }
+                size--;
+            }
+        }
+        
+        // peek
+        void peek(){
+            System.out.println(arr[size-1]);
+        }
+        
+        
+        //size
+        
+        void size(){
+            System.out.println(size);
+        }
+        
+        //min
         
         void min(){
-            System.out.println(min);
-        }
-        
-        // top / peek
-        
-        void minPeek(){
-            if(st.size() == 0){
-                System.out.println("Stack is Empty");
+            if(size == 0){
+                  System.out.println("Stack UnderFlow");
             }else{
-                System.out.println(st.peek());
+                 System.out.println(min);
             }
+           
         }
         
-        // push 
+        // display
         
-        void minPush(int val){
-            if(st.size() == 0 || val < min ){
-                st.push(val+(val- min));
-                min = val;
-            }else{
-                st.push(val);
+        void display(){
+            for(int i=size-1; i>=0; i--){
+                System.out.print(arr[i]+ " ");
             }
+            System.out.println();
         }
-        
-        void minPop(){
-            if(st.size() == 0){
-               System.out.println("Stack is Empty"); 
-            }else{
-                if(st.peek() < min){
-                    int val = min;
-                    min = 2 * min - st.peek();
-                    st.pop();
-                }else{
-                    st.pop();
-                }
-            }
-        }
-    
     }
 }
