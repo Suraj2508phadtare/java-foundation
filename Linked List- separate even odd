@@ -1,0 +1,111 @@
+Questions_____________________________________
+
+you are given partially written Linked List
+You are required to complete evenOdd function.
+
+input - 2 7 6 10 13 26 23 40 40 87 77 31 50 
+output - 2 6 10 26 40 40 50 7 13 23 87 77 31 
+
+Solution_______________________________________
+
+class Main {
+    
+    static class Node{
+        int data;
+        Node next;
+    }
+    
+    static class LinkedList{
+        Node head;
+        Node tail;
+        int size;
+        
+        void add(int val) {
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
+            
+            if(size == 0){
+                head = tail = temp;
+                size++;
+            }else{
+                tail.next = temp;
+                tail = temp;
+                size++;
+            }
+        }
+        
+        void display(){
+            Node temp = head;
+            
+            while(temp != null){
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+        
+        Node removeFirst(){
+            Node rhead = head;
+            if(size == 1){
+                head = tail = null;
+                size--;
+            }else{
+                head = head.next;
+                size--;
+            }
+            return rhead;
+        }
+        
+        void evenOdd(){
+            LinkedList even = new LinkedList();
+            LinkedList odd = new LinkedList();
+            
+            Node temp = this.head;
+             while(temp != null){
+                 Node val = removeFirst();
+                 
+                 if(val.data % 2 == 0){
+                     even.add(val.data);
+                 }else{
+                     odd.add(val.data);
+                 }
+                 
+                 temp = temp.next;
+             }
+             
+             this.head = even.head;
+             even.tail.next = odd.head;
+             this.tail = odd.tail;
+             this.size = odd.size + even.size;
+        }
+        
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        LinkedList list = new LinkedList();
+        
+        list.add(2);
+        list.add(7);
+        list.add(6);
+        list.add(10);
+        list.add(13);
+        list.add(26);
+        list.add(23);
+        list.add(40);
+        list.add(40);
+        list.add(87);
+        list.add(77);
+        list.add(31);
+        list.add(50);
+        
+        list.display();
+        
+        //list.removeDuplicate();
+        
+        list.evenOdd();
+        list.display();
+    
+    }
+}
