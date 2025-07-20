@@ -1,0 +1,24 @@
+Question___________________________________________
+
+find Factorial
+n = 5
+output - 120
+
+Solution____________________________________________
+
+class Main {
+    public static int findFactorial(int n){
+        if(n == 1){
+            return 1;
+        }
+       int nm1 = findFactorial(n-1);
+        int fact =  n * nm1;
+        return fact;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int val = findFactorial(5);
+        System.out.println(val);
+    }
+}
