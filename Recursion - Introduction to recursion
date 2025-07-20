@@ -1,0 +1,40 @@
+Question_____________________________________________________________
+    5
+    4
+    3
+    2
+    1
+    1
+    2
+    3
+    4
+    5
+
+output -- print above using recursion not iteratatively
+
+Solution____________________________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+// introduction to recursion
+
+class Main {
+    
+     static void printDecresingIncresing(int n){
+        if(n==0){
+            return;           // Base Condition
+        }
+        // top part called before every recursive called
+        System.out.println(n);
+        printDecresingIncresing(n-1); // recursive call
+        System.out.println(n);    // lower part called after base case for each recursive call
+        
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int n = 5;
+        printDecresingIncresing(n);
+    }
+}
