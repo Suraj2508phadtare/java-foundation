@@ -1,0 +1,41 @@
+Quetion_____________________________________________
+
+You are given value x and N
+You have to required to calculate x raised to the power n don't change signature of the power function.
+
+input ---> x = 3,  n = 4;
+output ---> 81
+
+
+time complexity ----- logn
+Solution________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+// lagarithmic solution
+
+class Main {
+    public static int power(int n, int x){
+        
+        if(n == 0){
+            return 1;
+        }
+       
+       int xpnb2 = power(n/2, x);
+       int xn = xpnb2 * xpnb2;
+       
+       if(n % 2 == 1){
+           xn = xn * x;
+       }
+       
+       return xn;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        int p = power(4, 3);
+        System.out.println(p);
+    }
+}
