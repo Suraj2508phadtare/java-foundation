@@ -1,0 +1,36 @@
+Question_______________________________________
+
+PRE IN and POST understanding the recursion double method is work
+Input ---->  2
+output---->
+Pre 2
+Pre 1
+In 1
+Post 1
+In 2
+Pre 1
+In 1
+Post 1
+Post 2
+
+Solution_______________________________________
+
+class Main {
+    
+    public static void zigZag(int n){
+        if (n==0){
+            return;
+        }
+        
+        System.out.println("Pre "  + n);
+        zigZag(n-1);
+        System.out.println("In " + n);
+        zigZag(n-1);
+        System.out.println("Post " + n);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        zigZag(3);
+    }
+}
