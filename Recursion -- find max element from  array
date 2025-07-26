@@ -1,0 +1,38 @@
+Question__________________________________________________
+
+You are given number n, representing the count of elements
+You are given n elements, representing elements in array
+You are required to find max elemnet from array using recursion..
+
+input 
+n = 6;
+arr = 10, 30, 22, 77, 777, 20, 8, 9;
+
+output -- 777
+
+
+Solution____________________________________________________
+
+class Main {
+    
+    public static int findMax(int[] arr, int n){
+        if(n == arr.length){
+            return 1;
+        }
+       int max = findMax(arr, n+1);
+       if(max < arr[n]){
+           max = arr[n];
+       } 
+       return max;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        int[] arr = {888, 30, 22, 77, 777, 20, 8, 9999};
+        int n = 0;
+        
+        int max = findMax(arr, n); 
+        System.out.print(max);
+    }
+}
