@@ -1,0 +1,41 @@
+Quetion______________________________________________________
+
+You are given number N, representing size of array.
+You are given numbers, representing elements in array.
+You are required print element of array from end to beginning each in separate line
+For Complete above purpose complete the body of displayArrFunction, Don't change the function.
+
+input
+n = 5
+arr = 10,20,30,40, 50
+
+output
+50
+40
+30
+20
+10
+
+solution________________________________________________________
+
+class Main {
+
+  // ex -- end pasun beginning prent sagale element print karel
+  // faith -- last pasun arr[1] prent print karayche mahit ahe 
+  faith + exp -- faith last pasun arr[1] prent print karel ani last wala apan(expentation) print karel
+    public static void printArray(int n, int[] arr){
+        if(n == arr.length){
+            return;
+        }
+        printArray(n+1, arr);
+        System.out.println(arr[n]);
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        int[] arr = {10,20,30,40,50};
+        
+        printArray(0, arr);
+        
+    }
+}
