@@ -1,0 +1,46 @@
+Quetion_______________________________________________
+
+You are given n represent, count in array
+You are given n numbers
+You are given  a x number
+You are required to print all indices where x is present otherwise null
+
+input 
+arr = 10, 3, 5, 6, 8, 3, 20, 73, 3 , 8, 7
+x = 3
+output 
+1 5 8 (3 is present 1, 5, 8 indices)
+
+
+Solution________________________________________________
+
+class Main {
+    public static int[] findNewIndex(int[] arr, int x, int n, int fsf){
+        
+        if(n == arr.length){
+            return new int[fsf];
+        }  
+        int[] ans = {};
+        if(arr[n] == x){
+            ans = findNewIndex(arr, x, n+1, fsf+1);
+            ans[fsf] = n; 
+            return ans;
+        }else{
+           ans = findNewIndex(arr, x, n+1, fsf);
+           return ans;
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        int[] arr = {10, 3, 5, 6, 8, 3, 20, 73, 3 , 8, 7};
+        int x = 3;
+
+        int[] ans = findNewIndex(arr, x, 0,0);
+        
+        for(int val : ans){
+            System.out.print(val + " ");
+        }
+    }
+}
