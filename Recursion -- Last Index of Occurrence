@@ -1,0 +1,36 @@
+Quetion_______________________________________________
+You are given n represent count of array
+You are given number x
+You are given n numbers
+You are required to print last index at which x is find otherwise print -1 
+
+input
+arr = 10, 2, 3, 4, 5 ,3 , 7, 3, 8
+x = 7
+
+output = 6 (last index)
+
+Solution__________________________________________________
+
+class Main {
+    public static int lastIndex(int x, int n, int[] arr) {
+        if(n == arr.length){
+          return -1; 
+        }
+          int rv =  lastIndex(x, n+1, arr);
+          if(x == arr[n] && rv == -1) {
+            return n;
+          }else{
+            return rv;   
+          }
+    }
+    
+    public static void main(String[] args) {
+      System.out.println("Try programiz.pro");
+        
+      int[] arr = {10, 2, 3, 4, 5 ,3 , 7, 3, 8};
+      int x = 7;
+      int firstOcc =  lastIndex(x, 0, arr);
+      System.out.println(firstOcc);
+    }
+}
