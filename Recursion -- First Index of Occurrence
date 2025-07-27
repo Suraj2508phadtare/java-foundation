@@ -1,0 +1,40 @@
+Question_______________________________________________________
+
+You are given n represent count of element in array
+You are given n numbers.
+You are given a x number.
+You are required to find first index at which x is occurs in array a.
+if x Exist in array print x index where it is found otherwise return -1
+
+Input = 
+arr = 10, 2, 3, 4, 5 ,6 , 7, 4, 8
+x = 3;
+n = 0;
+
+Output ---> 2
+
+Solution_________________________________________________________
+
+class Main {
+    public static int findFirstOccurance(int x, int n, int[] arr){
+        if(n == arr.length){
+          return -1; 
+        }
+        if(x == arr[n]){
+            return n;
+        }else{
+          int rv =  findFirstOccurance(x, n+1, arr);
+           return rv; 
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        int[] arr = {10, 2, 3, 4, 5 ,6 , 7, 4, 8};
+        int x = 3;
+      int firstOcc =  findFirstOccurance(x, 0, arr);
+      System.out.println(firstOcc);
+    }
+}
