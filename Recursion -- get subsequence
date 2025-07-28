@@ -1,0 +1,46 @@
+Quetion___________________________________________________________
+
+You are given string str
+calculate the body of getSS function, without changing the signature - to calculate all subsequence of str
+Use sample input and output to take idea subsequence
+
+input 
+String str = "abc";
+output
+, a, b, ab, c, ac, bc, abc
+
+solution____________________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+class Main {
+    public static ArrayList<String> allSubString(String str){
+        if(str.length() == 0) {
+            ArrayList<String> bss = new ArrayList<>();
+            bss.add("");
+            return bss;
+        }
+        
+        char ch = str.charAt(0);
+        String remainPart = str.substring(1);
+        ArrayList<String> psss = allSubString(remainPart);
+        
+        ArrayList<String> mss = new ArrayList<>();
+        for(String ss : sss){
+            mss.add("" + ss);
+            mss.add(ch + ss);
+        }
+        return mss;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        String str = "abc";
+        ArrayList<String> ans = allSubString(str);
+        
+        System.out.println(ans);
+    }
+}
