@@ -14,9 +14,12 @@ solution____________________________________________________________
 // Online Java Compiler
 // Use this editor to write, compile and run your Java code online
 
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
 import java.util.*;
 class Main {
-    public static ArrayList<String> allSubString(String str){
+    public static ArrayList<String> getSubString(String str){
         if(str.length() == 0) {
             ArrayList<String> bss = new ArrayList<>();
             bss.add("");
@@ -25,7 +28,7 @@ class Main {
         
         char ch = str.charAt(0);
         String remainPart = str.substring(1);
-        ArrayList<String> psss = allSubString(remainPart);
+        ArrayList<String> sss = getSubString(remainPart);
         
         ArrayList<String> mss = new ArrayList<>();
         for(String ss : sss){
@@ -39,7 +42,7 @@ class Main {
         System.out.println("Try programiz.pro");
         
         String str = "abc";
-        ArrayList<String> ans = allSubString(str);
+        ArrayList<String> ans = getSubString(str);
         
         System.out.println(ans);
     }
