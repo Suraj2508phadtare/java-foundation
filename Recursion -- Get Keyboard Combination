@@ -1,0 +1,59 @@
+Question_________________________________________________________________________
+
+Get Keypad Combination
+You are given string str, the String str contains number only, where each number stand for a key pressed on mobile phone
+a following list a key Character Map.
+.;
+abc
+def
+ghi
+jkl
+mno
+pqrs
+tu
+vwx
+yz
+Complete the body of getKPC without changing the singnature to get the list of all words that could be produced by key in str
+
+Solution______________________________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+
+class Main {
+    public static ArrayList<String> gkc(String str){
+        
+        if(str.length() == 0){
+            ArrayList<String> barr = new ArrayList<>();
+            barr.add("");
+            return barr;
+        }
+        
+        char ch = str.charAt(0);
+        String rs = str.substring(1);
+        
+        ArrayList<String> sres = gkc(rs);
+        ArrayList<String> nArr = new ArrayList<>();
+        
+        String charForCh = arr[ch - '0'];
+        
+        for(int i=0; i<charForCh.length(); i++){
+            char chh = charForCh.charAt(i);
+            for(String res : sres){
+                nArr.add(chh+res);
+            }
+        }
+        return nArr;
+    }
+    
+    public static String[] arr = {".:", "abc","def","ghi", "gkl","mno","pqrs", "tu","vwx", "yz"};
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        String str = "678";
+        ArrayList<String> fRes = gkc(str);
+        System.out.println(fRes);
+    }
+}
