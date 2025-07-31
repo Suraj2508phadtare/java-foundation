@@ -1,0 +1,59 @@
+Question___________________________________________________________
+
+You are Given a number n represent stairs in staircase
+You are standing at the bottom of staircase. You are allowed to climb 1 step, 2 step, and 3 step in one move
+Complete the body of getStairsPath function, without changing the signature to get list of all the paths that can be used to climb staircase up
+
+input -- 
+4
+output ---
+[1111, 112, 121, 13, 211, 22, 31]
+
+Solution____________________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+
+class Main {
+    
+    public static ArrayList<String> gsp(int n){
+        
+        if(n == 0){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }else if(n < 0){
+            ArrayList<String> bres = new ArrayList<>();
+            return bres;
+        }
+        
+        ArrayList<String> paths1 = gsp(n-1);
+        ArrayList<String> paths2 = gsp(n-2);
+        ArrayList<String> paths3 = gsp(n-3);
+        
+        ArrayList<String> shortStairsPath = new ArrayList<>();
+        
+        for(String p1 : paths1){
+            shortStairsPath.add("1" + p1);
+        }
+        
+        for(String p2 : paths2){
+            shortStairsPath.add("2" + p2);
+        }
+        
+        for(String p3 : paths3){
+            shortStairsPath.add("3"+p3);
+        }
+        
+        return shortStairsPath;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int n = 4;
+        ArrayList<String> ans = gsp(n);
+        System.out.println(ans);
+    }
+}
