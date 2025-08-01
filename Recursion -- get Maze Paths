@@ -1,0 +1,61 @@
+Quetion__________________________________________________
+
+You are given a number M and a number m representing representing number of rows and column in maze
+You are standing in the top left corner and you have to reach bottom right corner, only two moves are allowed 'h'- (1 step Horizontal) 'v' - (1 step vertical)
+Complete the body of getMazePaths function, without changing the signature to get all paths to move from top left corner to right bottom corner
+
+input --------
+3,3
+
+output -------
+[hhvv, hvhv, hvvh, vhhv, vhvh, vvhh]
+
+Solution_______________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+class Main {
+    
+    public static ArrayList<String> getMazePaths(int sr, int sc, int n, int m){
+        
+        if(sc == m && sr == n){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }
+        
+        ArrayList<String> hPaths = new ArrayList<>();
+        ArrayList<String> vPaths = new ArrayList<>();
+        
+        if(sc != n){
+           hPaths = getMazePaths(sr, sc+1, n, m); 
+        }
+       
+       if(sr != m){
+        vPaths = getMazePaths(sr+1, sc, n, m);  
+       }
+        
+        ArrayList<String> paths = new ArrayList<>();
+        
+        for(String hp : hPaths){
+            paths.add("h"+hp);
+        }
+        
+        for(String vp : vPaths){
+            paths.add("v"+vp);
+        }
+        
+        return paths;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        int n = 3;
+        int m = 3;
+        ArrayList<String> allPaths = getMazePaths(1, 1, n, m);
+        System.out.println(allPaths);
+    }
+}
