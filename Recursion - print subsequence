@@ -1,0 +1,34 @@
+Question______________________________________
+
+You are give string str
+Complete the body of printss function without changing signature to calculate and print all subsequences of str
+take input and output to take idea about sebsequence
+
+input-------------
+str = "abc"
+output------------
+abc, ab, ac, a, bc, b, c, ,
+
+Solution_____________________________________________
+
+class Main {
+    public static void printss(String que, String ans){
+        
+        if(que.length() == 0){
+            System.out.print(ans +", ");
+            return;
+        }
+        
+        char ch = que.charAt(0);
+        String rs = que.substring(1);
+        printss(rs, ans+ch);
+        printss(rs, ans+"");
+        
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        String str = "abc";
+        printss(str, "");
+    }
+}
