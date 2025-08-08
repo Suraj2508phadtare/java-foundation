@@ -1,0 +1,42 @@
+Quetions______________________________________________
+
+You are given string str the String str contains numbers only where each number stands for key pressed in mobile phone
+the following list is key to characters map
+codes = {".;", "abc","def","ghi","jkl","mno","pqrs","tu", "vwx","yz"};
+complete the body of printKC function, without changing signature, to print list of all words that could be produced by the keys in str
+use sample input and output to take idea about output
+
+input-----------------------
+678
+Output-------------------------
+ptv, ptw, ptx, puv, puw, pux, qtv, qtw, qtx, quv, quw, qux, rtv, rtw, rtx, ruv, ruw, rux, stv, stw, stx, suv, suw, sux, 
+
+Solution_______________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static String[] codes = {".;", "abc","def","ghi","jkl","mno","pqrs","tu", "vwx","yz"};
+    
+    public static void printKC(String que, String ans){
+        if(que.length() ==  0){
+            System.out.print(ans +", ");
+            return;
+        }
+        
+        char ch = que.charAt(0);
+        String rs = que.substring(1);
+        String code = codes[ch -'0'];
+        for(int i=0; i<code.length(); i++){
+            char chh = code.charAt(i);
+            printKC(rs, ans+chh);
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        String str = "678";
+        printKC(str, "");
+    }
+}
