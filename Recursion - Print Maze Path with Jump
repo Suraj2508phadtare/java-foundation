@@ -1,0 +1,50 @@
+Quetion____________________________________
+
+You are given a number n and m number representing number n and m in maze.
+You are standing top left corner and have to reach bottom right cornar
+In single move you are allowed to jump 1 or more horizontlly(h1, h2, ....) or more steps vertically (as v1 v2 ...) or 1 more step (d1, d2 ....)
+complete the body printMPJ function
+
+input---------
+3,3
+
+output --------
+
+h1h1v1v1, h1h1v2, h1v1h1v1, h1v1v1h1, h1v1d1, h1v2h1, h1d1v1, h2v1v1, h2v2, v1h1h1v1, 
+v1h1v1h1, v1h1d1, v1h2v1, v1v1h1h1, v1v1h2, v1d1h1, v2h1h1, v2h2, d1h1v1, d1v1h1, d1d1, d2h1v1, d2v1h1, d2d1, 
+
+Solution__________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+// print Maze Paths with jump
+class Main {
+    public static void printMPJ(int row, int col, int nRow, int mCol, String mPaths){
+        
+        if(row == nRow && col == mCol){
+            System.out.print(mPaths+ ", ");
+            return;
+        }
+        
+        // horizontal
+        for(int i =1; i<=col-mCol; i++){
+            printMPJ(row, col, nRow, mCol+i, mPaths+"h"+i);   
+        }
+        
+        //vertical
+        for(int i=1; i<=row-nRow; i++){
+            printMPJ(row, col, nRow+i, mCol, mPaths+"v"+i);
+        }
+        
+        // diagonal
+        for(int i=1; i<=row-nRow && i<=col-mCol; i++){
+            printMPJ(row, col, nRow+1, mCol+1, mPaths+"d"+i);
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        printMPJ(3, 3, 1,1,"");
+    }
+}
