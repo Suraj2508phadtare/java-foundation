@@ -1,0 +1,39 @@
+Question_________________________________________________
+
+You are given a n number representing number of stairs in a staircase
+You are standing at bottom of staircase, you are allowed to climb 1 step 2 step or 3 step in one move
+complete the body of printSP function, without changing the signature, to print list of all paths that can be used to climb staircase up..
+use sample input and output to take idea abot output
+
+input -------------
+4
+
+output -------------
+1111, 211, 121, 31, 112, 22, 13,
+
+Solution_______________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+//print stairs path
+class Main {
+    public static void printSP(int n, String paths){
+        if(n==0){
+            System.out.print(paths+", ");
+            return;
+        }
+        if(n<0){
+            return;
+        }
+        
+        printSP(n-1,"1"+paths);
+        printSP(n-2, "2"+paths);
+        printSP(n-3, "3"+paths);
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        printSP(4, "");
+    }
+}
+
