@@ -1,0 +1,41 @@
+Question____________________________________
+
+You are given a number M and a number m representing representing number of rows and column in maze
+You are standing in the top left corner and you have to reach bottom right corner, only two moves are allowed 'h'- (1 step Horizontal) 'v' - (1 step vertical)
+Complete the body of getMazePaths function, without changing the signature to get all paths to move from top left corner to right bottom corner
+
+input --------
+3,3
+
+output -------
+[hhvv, hvhv, hvvh, vhhv, vhvh, vvhh]
+
+solution_____________________________________
+
+//print maze paths
+class Main {
+    public static void printMP(int row, int col, int nRow, int mCol, String mPaths){
+        
+        if(nRow == row && mCol == col){
+            System.out.print(mPaths + ", ");
+            return;
+        }
+        
+        // horizontal
+        if(nRow<=row){
+            printMP(row, col, nRow+1, mCol, mPaths+"h");
+        }
+        
+        //vertical
+        if(mCol<=col){
+            printMP(row, col, nRow, mCol+1, mPaths+"v");
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        printMP(3,3,1,1,"");
+    }
+}
+
