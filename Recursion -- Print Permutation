@@ -1,0 +1,41 @@
+Quetion______________________________________
+
+You are given String str
+Complete the body of print permutation function. without changing signature to calculate and print all permutation of str
+use sample input and output to take idea about permutation
+
+input---------------
+str = abc
+
+output -------------
+abc, acb, bac, bca, cab, cba
+
+
+Solution_____________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+
+//print Permutation
+class Main {
+    public static void printPermutation(String que, String ans){
+        
+        if(que.length() == 0){
+            System.out.print(ans + ", ");
+            return;
+        }
+        
+        for(int i=0; i<que.length(); i++){
+            char ch = que.charAt(i);
+            String rs = que.replace(ch+"", "");
+            printPermutation(rs, ans+ch);
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        String str = "abc";
+        printPermutation(str, "");
+    }
+}
