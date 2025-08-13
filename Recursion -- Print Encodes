@@ -1,0 +1,77 @@
+Quetion___________________
+
+You are given string str of digits(will newer start with 0)
+you are required th encode the string as per following rules
+
+1 --> a
+2 --> b
+3 --> c
+4 --> d
+|
+|
+26 --> z
+
+Complete the body of printEncoding function without changing the signature -- to calculate and print all encoding of str
+Use input and output for get more understading of the requirement..
+
+993 --> iic
+013 --> invalid input string start with 0 not passed
+103 --> jc
+
+
+input-------------
+123
+
+output-------------
+abc, aw, lc
+
+
+solution________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void printEncoded(String que, String ans){
+        if(que.length() == 0){
+            System.out.print(ans+ " ");
+            return;
+        }else if(que.length() == 1){
+            char ch = que.charAt(0);
+            if(ch == '0'){
+                return;
+            }else{
+                int n = ch-'0';
+                char code =  (char)('a' + n -1);
+                System.out.print(ans+code+ " ");
+            }  
+        
+        }else {
+            char ch = que.charAt(0);
+            String rosch = que.substring(1);
+            if(ch == '0'){
+               return;
+            }else{
+                int n = ch-'0';
+                char code = (char)('a' + n -1);
+                printEncoded(rosch, ans+code);
+            }
+            
+            String ch12 = que.substring(0,2);
+            String resch12 = que.substring(2);
+            int nch12 = Integer.parseInt(ch12);
+           
+           if(nch12 <= 26) {
+              char code = (char)('a'+nch12-1);
+              printEncoded(resch12, ans+code);
+           } 
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        String que = "123";
+        printEncoded(que, "");
+    }
+}
