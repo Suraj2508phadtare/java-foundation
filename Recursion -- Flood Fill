@@ -1,0 +1,67 @@
+Questions________________________________
+
+You are given number n represent number in rows
+Your are given number m represent number in columns
+You are given n*m number represent number in 2d Arrays, The number 0 and 1 only
+You are standing top left corner reach to bottom right corner only foru steps allowed (1st up), (2nd down), (3rd left), (4th right)
+You can move in cells have 0 value in them, You can't move out of the boundries or in the cells which have value 1 in them(1 means obstacle)
+complet the body of the printFloodFill function without changing the signature
+
+
+
+input---------------
+ {{0,1,0,0,0,0,0},{0,1,0,1,1,1,0},{0,0,0,0,0,0,0}, {1,0,1,1,0,1,1},{1,0,1,1,0,1,1},{1,0,0,0,0,0,0}};
+
+output---------------
+3 paths to reached destination
+
+D D R D D D R R R R R 
+D D R R T T R R R R D D L L D D D R R 
+D D R R R R D D D R R 
+
+Solution____________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void printFloodFill(int[][] arr, int roIdx, int colIdx, boolean[][] isValidator, String ans){
+        
+        if(roIdx<0 || colIdx<0 || roIdx>arr.length-1 || colIdx>arr[0].length-1 || arr[roIdx][colIdx] == 1 ||  isValidator[roIdx][colIdx] == true){
+            return;
+        }
+        
+        if(roIdx == arr.length-1 && colIdx == arr[0].length-1){
+            System.out.println(ans);
+            return;
+        }
+        
+        // mark as valid once you come from taht rought
+        isValidator[roIdx][colIdx] = true;
+        // top
+        printFloodFill(arr, roIdx-1, colIdx, isValidator, ans+"T ");
+        
+        //down
+        
+        printFloodFill(arr, roIdx+1, colIdx, isValidator, ans+"D ");
+        
+        //left
+        
+        printFloodFill(arr, roIdx,colIdx-1, isValidator, ans+"L ");
+        
+        //right
+        printFloodFill(arr, roIdx, colIdx+1, isValidator, ans+"R ");
+        
+        isValidator[roIdx][colIdx] = false;
+    }
+    
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        int[][] arr = {{0,1,0,0,0,0,0},{0,1,0,1,1,1,0},{0,0,0,0,0,0,0}, {1,0,1,1,0,1,1},{1,0,1,1,0,1,1},{1,0,0,0,0,0,0}};
+        boolean[][] isValidator = new boolean[arr.length][arr[0].length];
+        
+        printFloodFill(arr, 0, 0, isValidator, "");
+    }
+}
