@@ -1,0 +1,42 @@
+Question______________________________________________
+
+You are given number n represent count of element,
+You are given n numbers
+You are given a number "tar"
+Complete the body of printTargetSumSubset function, without changing the signature
+
+Input--------------
+
+10,20,30,40,50
+target -- 70
+
+output------------
+
+10 20 40 
+20 50 
+30 40 
+
+Solution______________________________________________
+
+class Main {
+    
+    public static void printTargetSumSubset(int[] arr, int idx, int tar, int sum, String ans){
+        
+        if(idx >= arr.length){
+            if(sum == tar){
+                System.out.println(ans);
+            }
+            return;
+        }
+        
+        printTargetSumSubset(arr, idx+1, tar, arr[idx]+sum, ans+arr[idx]+" ");
+        printTargetSumSubset(arr, idx+1, tar, sum, ans);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int[] arr = {10,20,30,40,50};
+        int tar = 70;
+        printTargetSumSubset(arr, 0, tar, 0, "");
+    }
+}
