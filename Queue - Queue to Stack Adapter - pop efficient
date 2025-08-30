@@ -1,0 +1,67 @@
+Question___________________________________________
+
+using queue achive stack bavaviour queue is FIFO and stack is LIFO 
+use time complexcity for top/pop is On(for this operations use time complexity efficiently)
+push is linear time complexity
+
+10, 20, 30, 40, 50
+top 50;
+pop 50;
+
+solution___________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+
+class Main {
+    
+    public static class QueueToStackAdapter{
+        Queue<Integer> que;
+        Queue<Integer> queHelper;
+        
+        public QueueToStackAdapter() {
+            que = new ArrayDeque<>();
+            queHelper = new ArrayDeque<>();
+        }
+        
+        int size() {
+           return que.size();
+        }
+        
+        void push(int data) {
+            while(que.size() > 0) {
+                queHelper.add(que.remove());
+            }
+            que.add(data);
+            while(queHelper.size() > 0) {
+                que.add(queHelper.remove());
+            }
+        }
+        void pop(){
+            System.out.println(que.remove());
+        }
+        
+        void top(){
+            System.out.println(que.peek());
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+      QueueToStackAdapter qa = new QueueToStackAdapter();
+      
+       qa.push(10);
+       qa.push(20);
+       qa.push(30);
+       qa.push(40);
+       qa.push(50);
+      
+      qa.pop();
+      qa.pop();
+      qa.top();
+    }
+}
