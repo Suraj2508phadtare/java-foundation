@@ -1,0 +1,93 @@
+Question___________________________________________________
+
+
+Linked List Reverse Linked List using Pointes
+
+input -- 10,20,30,40,50
+output -- 50,40,30,20,10
+
+Solution___________________________________________________________
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+
+class Main {
+   public static class Node{
+        Node next;
+        int data;
+    }
+    
+    public static class LinkedList{
+        int size;
+        Node head;
+        Node tail;
+        
+         void add(int data) {
+            Node temp = new Node();
+            temp.data = data;
+            temp.next = null;
+            if(size == 0){
+              head = tail = temp;
+              size++;
+            }else{
+                tail.next = temp;
+                tail = temp;
+                size++;
+            }
+        }
+        
+        int size(){
+            return size;
+        }
+        
+        void displayLL(){
+            Node temp = head;
+            for(int i=0; i<size; i++){
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            
+                System.out.println();
+        }
+        
+        void reverseHelper(Node cNode) {
+            if(cNode == null) {
+                return;
+            }
+            
+         reverseHelper(cNode.next);
+         if(cNode == tail){
+             // nothing do here
+         }else{
+             cNode.next.next = cNode;
+         }
+         
+         
+        }
+        
+       void reverseLL() {
+            reverseHelper(head);
+            head.next = null;
+            Node temp = head;
+            head = tail;
+            tail = temp;
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        LinkedList ll = new LinkedList();
+        
+        ll.add(10);
+        ll.add(20);
+        ll.add(30);
+        ll.add(40);
+        ll.add(50);
+        
+        ll.displayLL();
+        
+        ll.reverseLL();
+        ll.displayLL();
+    }
+}
