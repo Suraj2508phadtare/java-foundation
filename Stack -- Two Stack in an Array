@@ -1,0 +1,131 @@
+Question_________________________________________
+
+implement 2 stack using array 
+
+logic isert 1st stack from bottom and
+second array from top
+
+Input------
+        st.push1(10);
+        st.push1(20);
+        st.push1(30);
+        
+        st.push2(100);
+        st.push2(200);
+        st.pop1();
+        st.push2(300);
+        System.out.println(st.peek1());
+        System.out.println(st.peek2());
+
+output ---------
+        stack 1-- 20
+        stack 2-- 300
+
+Solution________________________________________
+
+class Main {
+
+    public static class TwoStack{
+        int[] data;
+        int tos1;
+        int tos2;
+        
+        public TwoStack(int cap){
+            data = new int[cap];
+            tos1 = -1;
+            tos2 = data.length;
+        }
+        
+        // size
+        int size1() {
+            return tos1+1;
+        }
+        
+        int size2() {
+            return data.length - tos2;
+        }
+        
+        // push
+        void push1(int val){
+            if(tos2 == tos1+1){
+                System.out.println("Stack Is Overflow");
+            }else{
+                tos1++;
+                data[tos1] = val;
+            }
+        }
+        
+        void push2(int val){
+             if(tos2 == tos1+1){
+                System.out.println("Stack Is Overflow");
+            }else{
+                tos2--;
+                data[tos2] = val;
+            }
+        }
+        
+        // pop
+        int pop1(){
+            
+            if(size1() == 0){
+                System.out.println("Stack is underflow");
+                return -1;
+            }
+            int val = data[tos1];
+            tos1--;
+            return val;
+        }
+        
+        int pop2(){
+             if(size2() == 0){
+                System.out.println("Stack is underflow");
+                return -1;
+            }
+            int val = data[tos2];
+            tos2++;
+            return val;
+        }
+        
+        //top
+        int peek1(){
+            if(size1() == 0){
+                System.out.println("Stack is Underflow");
+                return -1;
+            }
+            
+            return data[tos1];
+        }
+        
+        int peek2(){
+            if(size2() == 0){
+                System.out.println("Stack is Underflow");
+                return -1;
+            }
+            
+            return data[tos2];
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        TwoStack st = new TwoStack(5);
+        
+        st.push1(10);
+        st.push1(20);
+        st.push1(30);
+        
+        st.push2(100);
+        st.push2(200);
+        
+        st.pop1();
+        
+        st.push2(300);
+        
+       
+        // st.pop2();
+        
+        System.out.println("stack 1 "+st.peek1());
+        System.out.println("stack 2 "+st.peek2());
+    }
+}
