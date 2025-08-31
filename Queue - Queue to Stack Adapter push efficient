@@ -1,0 +1,79 @@
+Question________________________________________
+
+Queue to stack Adaptor -- push Efficient
+
+using Queue achive bahavior like stack queue is FIFO and Stack is LIFO,
+push time complexcity is On Constant 
+pop and top have linear time complexcity..
+
+
+Solution____________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+
+class Main {
+    public static class QueueToStackAdapter{
+        
+        Queue<Integer> que;
+        
+     QueueToStackAdapter(){
+            que = new ArrayDeque<>();
+        }
+        
+        int size(){
+           return que.size(); 
+        }
+        
+        void push(int data){
+            que.add(data);
+        }
+        
+        void pop(){
+            Iterator<Integer> iterator = que.iterator();
+            for(int i=0; i<size(); i++){
+                if(i == size()-1){
+                    System.out.println(iterator.next());
+                    iterator.remove();
+                }else{
+                    iterator.next();
+                }
+            }
+            
+        }
+        
+        void top(){
+            Iterator<Integer> iter = que.iterator();
+            for(int i=0; i<size(); i++){
+                if(i == size()-1){
+                    System.out.println(iter.next());
+                }else{
+                    iter.next();
+                }
+            }
+        }
+        
+        void display(){
+            System.out.println(que);
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        QueueToStackAdapter qa = new QueueToStackAdapter();
+        
+        qa.push(10);
+        qa.push(20);
+        qa.push(30);
+        qa.push(40);
+        
+        qa.top();
+        qa.pop();
+        qa.pop();
+        qa.display();
+    }
+}
