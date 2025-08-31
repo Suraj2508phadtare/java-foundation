@@ -1,0 +1,72 @@
+Question______________________________
+
+You are required to complete code for StackToQueueAdapter class the class should behave like Queue and implement FIFO 
+Here are the functions are need to return in the class
+add -- implement in linear time
+remove --  implement in constant time
+size -- implement in constant time
+peek -- implement in constant Time.
+input --
+10, 20, 30, 40
+
+output -- 
+peek -- 10
+remove -- 10
+then peek 20
+
+solution____________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+
+class Main {
+    public static class StackToQueueAdapter{
+        Stack<Integer> st;
+        Stack<Integer> stHelper;
+        
+        StackToQueueAdapter(){
+            st = new Stack<>();
+            stHelper = new Stack<>();
+        }
+        
+        int size(){
+            return st.size();
+        }
+        
+        void add(int val){
+            
+            while(st.size()>0){
+                stHelper.add(st.pop());
+            }
+            st.add(val);
+            while(stHelper.size()>0){
+                st.add(stHelper.pop());
+            }
+        }
+        
+        int remove(){
+          return st.pop();
+        }
+        
+        int peek(){
+          return st.peek();
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        StackToQueueAdapter st = new StackToQueueAdapter();
+        
+        st.add(10);
+        st.add(20);
+        st.add(30);
+        st.add(40);
+        
+        System.out.println(st.peek());
+        st.remove();
+        System.out.println(st.peek());
+    }
+}
