@@ -1,0 +1,108 @@
+Question_________________________________________________
+
+you are given partially return linked List class
+you are required to complete body isPalindrome function, the function is expected to check if linkedList is Palindrome or not and return true or false
+
+input --- 
+1 2 3 2 1
+output
+Number is Palindrome
+
+Input ---
+2 1 4 5 2
+output ---
+Number is not Palindrome
+
+solution________________________________________________
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static class Node{
+        Node next;
+        int data;
+    }
+    
+    public static class LinkedList{
+        int size;
+        Node head;
+        Node tail;
+        
+        int size(){
+            return size;
+        }
+        
+        void add(int val){
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
+            
+            if(size == 0){
+                head = tail = temp;
+                size++;
+            }else{
+                tail.next = temp;
+                tail = temp;
+                size++;
+            }
+        }
+        
+        void display(){
+            Node temp = head;
+            
+            while(temp != null){
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+        
+        boolean palindromeHelper(Node rNode, int floor){
+            if(rNode == null){
+                return true;
+            }
+            boolean rres = palindromeHelper(rNode.next, floor+1);
+            if(floor>= size()/2){
+            if(rres == false){
+                return false;
+            }else if(lNode.data != rNode.data){
+                return false;
+            }else{
+                lNode = lNode.next;
+                 return true; 
+            }
+            }
+            return rres;
+        }
+        
+        Node lNode;
+        
+        boolean isPalindrome(){
+            lNode = head;
+           boolean rv = palindromeHelper(head, 1);
+           return rv;
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+        LinkedList ll = new LinkedList();
+        ll.add(1);
+        ll.add(2);
+        ll.add(3);
+        ll.add(4);
+        ll.add(1);
+        
+        ll.display();
+        
+        boolean isPal = ll.isPalindrome();
+        
+        if(isPal){
+            System.out.println("number is Palindrome");
+        }else{
+            System.out.println("number is not Palindrome");
+        }
+    }
+}
